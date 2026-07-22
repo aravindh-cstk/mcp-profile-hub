@@ -1,10 +1,10 @@
 ---
 
-## uid: ""
-
 url: "/agent-os/mcp-profile-hub"
 seo_title: "MCP Profile Hub | Contentstack"
 seo_description: "Create governed MCP profiles that expose a curated set of Contentstack tools, then connect them to Claude, ChatGPT, Cursor, and other AI clients."
+
+---
 
 # MCP Profile Hub
 
