@@ -8,11 +8,11 @@ seo_description: "Create governed MCP profiles that expose a curated set of Cont
 
 # MCP Profile Hub
 
-MCP Profile Hub is a Contentstack Marketplace app that creates **profiles**: each profile exposes a fixed, named subset of Contentstack tools over the Model Context Protocol (MCP), and any MCP-compatible AI client can connect to it. Without that scoping, an agent given all the Contentstack tools at once picks the wrong tool more often, fills its context window with unused tool definitions, and fails tasks that smaller models could otherwise complete.
+MCP Profile Hub is a Contentstack Marketplace app that creates **profiles**. Each profile exposes a fixed subset of Contentstack tools over the Model Context Protocol (MCP), and any MCP-compatible AI client can connect to it. This helps agents select the correct tool, prevents unused tool definitions from consuming the context window, and reduces task failures in smaller models.
 
 ## What you'll learn
 
-- Decide whether to install a ready-made system profile or build a custom one
+- Decide whether to install a system profile or build a custom one
 - Create a profile using the Tool selection, Configuration, and Installation wizard
 - Connect a profile to Claude, Claude Code, Cursor, Codex, ChatGPT, or another MCP client
 - Verify a connected client can call the profile's tools
@@ -23,10 +23,10 @@ MCP Profile Hub is a Contentstack Marketplace app that creates **profiles**: eac
 ## Quick decision guide
 
 
-| Approach               | Key configuration value                                            | Reason                                                                                               |
-| ---------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| Use a system profile   | Pick a profile from the System profiles list, then choose a stack  | Fastest path. No tool selection needed, works for common jobs like asset lookup or content discovery |
-| Build a custom profile | Run the 3-step wizard: Tool selection, Configuration, Installation | Needed when no system profile matches the job, or the job requires a specific, narrower toolset      |
+| Approach                                                   | Key configuration value                                            | Reason                                                                                               |
+| ---------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| [Use a system profile](#option-a-use-a-system-profile)     | Pick a profile from the System profiles list, then choose a stack  | Fastest path. No tool selection needed, works for common jobs like asset lookup or content discovery |
+| [Build a custom profile](#option-b-build-a-custom-profile) | Run the 3-step wizard: Tool selection, Configuration, Installation | Needed when no system profile matches the job, or the job requires a specific, narrower toolset      |
 
 
 
@@ -47,13 +47,13 @@ Optional:
 
 ## Create a profile
 
-You build a profile in the MCP Profile Hub app using a three-step wizard: Tool selection, Configuration, Installation. You can also start from a ready-made system profile and only configure and install it.
+You create a profile in the MCP Profile Hub app through a three-step wizard: Tool selection, Configuration, Installation. Starting from a system profile skips Tool selection, so you only complete Configuration and Installation.
 
 ### Option A: use a system profile
 
-1. On the **Profiles** screen, open a profile from the **System profiles** section, for example *Asset Librarian* or *Content Explorer*.
-2. Complete **Configuration**: pick the stack the profile operates on.
-3. Continue to **Installation**.
+1. On the **Profiles** screen, open a profile from the **System profiles** section (e.g., Asset Librarian).
+2. In **Configuration**, select the stack the profile operates on.
+3. In the **Installation** section, use any of the AI client to use the tools
 
 No tool selection is needed for a system profile.
 
@@ -62,20 +62,22 @@ No tool selection is needed for a system profile.
 **Step 1: Select tools**
 
 1. Click **New Profile**.
-2. Give the profile a **name** (required) and an optional **description** of the job it supports.
+2. Give the profile a **name** and an optional **description**.
 3. Under **Tools**, click **Browse catalog**.
-4. Pick a catalog on the left, for example CMA (Content Management API), CDA (Content Delivery API), or Launch, then search or filter within it. Tools are grouped by area and tagged by operation: Read, Create, Update, Delete, Action, or Publishing.
+4. Pick a catalog on the left, for example CMA (Content Management API), CDA (Content Delivery API), or Launch, then search or filter within it.
 5. Select the tools this profile should expose and click **Save selection**.
 6. Click **Save & Continue**.
 
-![Browse tools panel showing catalogs on the left, such as CMA, CDA, and Launch, tools grouped by area, such as Entry Management, and operation tags like Read, Delete, or Publishing.](assets/browse-tools-panel.png)
+![Browse tools panel showing catalogs on the left, such as All tools, CMA, CDA, Analytics, BrandKit, Launch, DeveloperHub, and Personalize, tools grouped by area, such as Entry Management, and each tool tagged by operation, such as Publishing or Create.](assets/browse-tools-panel.png)
 
-A wider tool selection pulls in more OAuth (Open Authorization) scopes for the client to request, since required scopes are derived automatically from your selection. Keep the selection tight. Prefer a second focused profile over piling unrelated tools into one.
+**Tip:** Tools are grouped by area and tagged by operation: Read, Create, Update, Delete, Action, or Publishing.
+
+A wider tool selection pulls in more OAuth  scopes for the client to request, since required scopes are derived automatically from your selection. Keep the selection tight. Prefer a second focused profile over adding unrelated tools to one.
 
 **Step 2: Configure**
 
 1. Under **Configuration**, connect the Contentstack project the profile operates on.
-2. Select the **Stack** (required).
+2. Select the **Stack**.
 3. Click **Save & Continue**.
 
 **Step 3: Install**
@@ -88,13 +90,11 @@ https://mcp-hub.contentstack.com/api/mcp?profile_id=<profile_id>
 
 The `profile_id` is a catalog identifier, not a secret. Identity is established entirely through OAuth, so the URL is safe to share.
 
-The **Install** screen shows a ready-to-paste snippet for each supported client, plus the raw connector URL.
+The **Install** screen shows a ready-to-paste snippet for each supported client, and the raw connector URL.
 
-![Installation step showing the client tabs, a copy-ready config snippet, the raw connector URL, and the Add to Claude button.](assets/installation-step.png)
+Installation step shows different client tabs along with the raw connector URL.  Select your client and follow the matching section under [Connect your AI client](#connect-your-ai-client).
 
-Pick your client and follow the matching section under [Connect your AI client](#connect-your-ai-client).
-
-Verification: the profile's Installation screen shows a stable endpoint URL. That URL is what you paste into an MCP client in the next section.
+**Verification:** the profile's Installation screen shows a stable endpoint URL. Paste that URL into an MCP client in the next section.
 
 ### Edit a profile
 
@@ -104,29 +104,27 @@ Reopen a profile any time to change its tools or configuration. The `profile_id`
 
 Every profile is a remote MCP server you connect to over Streamable HTTP. Auth is handled by OAuth in the browser on first connect. No keys, management tokens, or delivery tokens go into client configuration.
 
-The steps below use the `asset_librarian` profile as an example. Swap in your own `profile_id`, or copy the ready-made snippet from the profile's Installation step.
+The steps below use the `asset_librarian` profile as an example. Replace it with your `profile_id`, or copy the config snippet from the profile's Installation step.
 
 ```
 https://mcp-hub.contentstack.com/api/mcp?profile_id=asset_librarian
 ```
 
-
-
 ### Claude (Desktop and web)
 
-1. From the profile's Installation step, open the **Claude Desktop** tab and click **Add to Claude**. This opens claude.ai's *Add custom connector* dialog, pre-filled.
+1. From the profile's Installation step, open the **Claude Desktop** tab and click **Add to Claude**. This opens and prefilled claude.ai's custom connector popup.
 2. Review the details and click **Add**.
 
-TODO(screenshot): Add custom connector dialog. It should show the pre-filled connector name and URL, and the Add button.
+To add it manually, follow the steps below:
 
-To add it by hand instead:
-
-1. Open **Settings → Connectors → Add custom connector** on claude.ai.
+1. Open **Settings > Connectors > Add custom connector** on claude.ai.
 2. Set a name (for example, `Asset Librarian`).
 3. Paste the connector URL and click **Add**.
 4. Complete the browser OAuth sign-in when prompted.
 
-Alternatively, configure the Claude Desktop app through `claude_desktop_config.json` using the `mcp-remote` bridge, which proxies the remote server over stdio and handles the OAuth flow. This requires Node.js.
+Alternatively, configure the Claude Desktop app through `claude_desktop_config.json` using the `mcp-remote` bridge, which proxies the remote server over stdio and handles the OAuth flow. This requires Node.js. 
+
+Add this block to `claude_desktop_config.json`:
 
 ```json
 {
@@ -143,10 +141,9 @@ Alternatively, configure the Claude Desktop app through `claude_desktop_config.j
 }
 ```
 
-1. Claude Desktop only reads `claude_desktop_config.json` on launch, so restart it to pick up the new server entry.
-2. On first use, a browser opens for Contentstack OAuth. Approve the scopes.
+Claude Desktop only reads `claude_desktop_config.json` on launch, so restart it to pick up the new server entry. On first use, a browser opens for Contentstack OAuth. Approve the scopes.
 
-Verification: the profile's tools appear in Claude's tool list once OAuth completes.
+**Verification:** The profile's tools appear in Claude's tool list once OAuth completes.
 
 ### Claude Code (CLI)
 
@@ -158,7 +155,7 @@ Claude Code supports remote HTTP MCP servers natively.
 claude mcp add --transport http asset-librarian "https://mcp-hub.contentstack.com/api/mcp?profile_id=asset_librarian"
 ```
 
-An unquoted URL lets the shell interpret `?` and `&` as shell syntax instead of part of the URL, breaking the command. Keep the URL quoted. To make the server available in every project, add `--scope user`.
+Warning:An unquoted URL lets the shell interpret `?` and `&` as shell syntax instead of part of the URL, breaking the command. Keep the URL quoted. To make the server available in every project, add `--scope user`.
 
 1. Run `/mcp` inside Claude Code and pick the server.
 2. Complete the browser sign-in.
@@ -180,10 +177,10 @@ Verification: `/mcp` lists the server as connected, with the profile's tools ava
 }
 ```
 
-1. Open **Cursor Settings → MCP** (or reload).
+1. Open **Cursor Settings > MCP** (or reload).
 2. On first tool use, approve the Contentstack OAuth prompt in the browser that opens.
 
-Verification: the server shows as connected under **Cursor Settings → MCP**, with the profile's tools listed.
+**Verification**: The server shows as connected under **Cursor Settings > MCP**, with the profile's tools listed.
 
 ### Codex and ChatGPT
 
@@ -204,7 +201,7 @@ Add one `[mcp_servers.<name>]` block per profile.
 
 ChatGPT connects to remote MCP servers as custom connectors. The exact menu names depend on your plan, so consult OpenAI's current connector documentation if these steps do not match what you see.
 
-1. In ChatGPT, open **Settings → Connectors**.
+1. In ChatGPT, open **Settings > Connectors**.
 2. Choose **Add custom connector**, give it a name, and paste the connector URL.
 3. Save, then complete the Contentstack OAuth sign-in and approve the scopes.
 4. Enable the connector in a conversation.
@@ -221,11 +218,9 @@ Any MCP-compatible client can connect. Point it at the profile URL as a remote H
 
 For clients that only support stdio, bridge with [mcp-remote](https://www.npmjs.com/package/mcp-remote) (requires Node.js), using the same configuration shape shown for Claude Desktop above.
 
-Verification: most clients list the connected server and its tools once auth completes. Ask the agent to do something the profile supports. If tools do not appear or the call fails, see [Troubleshooting](#troubleshooting).
+**Verification**: most clients list the connected server and its tools once auth completes. Ask the agent to do something the profile supports. If tools do not appear or the call fails, see [Troubleshooting](#troubleshooting).
 
-## Theory sections
-
-
+## Concepts and reference
 
 ### How MCP Profile Hub works
 
@@ -248,15 +243,15 @@ A profile bundles:
 - **Configuration**: the Contentstack projects it operates on, such as the default stack
 - **Scope**: private to you, or shared across your organization
 
-Tools are not raw API endpoints. When a client connects, the runtime contextualizes each tool against your actual Contentstack setup, so the tool reflects what you can actually do rather than a generic API surface.
+Tools are not raw API endpoints. When a client connects, the runtime contextualizes each tool against your Contentstack setup, so the tool reflects what you can do rather than a generic API surface.
 
 ### System profiles and custom profiles
 
-**System profiles** are curated, ready-to-use profiles available to every organization, such as *Asset Librarian*, *Content Explorer*, *Content Modeler*, *Campaign Go-Live*, and *Broken Reference Checker*. Most are deliberately narrow: read-only discovery or a single focused operation. Product-level profiles (for example, a full-CMS profile) are the exception. They expose an entire product catalog, including destructive tools, and should only be used when full product control is intended.
+**System profiles** are predefined profiles available to every organization, such as Asset Librarian, Content Explorer, Content Modeler, Campaign Go-Live, and Broken Reference Checker. Most are deliberately narrow: read-only discovery or a single focused operation. Product-level profiles (for example, a full-CMS profile) are the exception. They expose an entire product catalog, including destructive tools, and should only be used when full product control is intended.
 
 **Custom profiles** are created by your organization. You build them from the tool catalog to match your own jobs, for example a regional publishing assistant, a localization workflow profile, or a content audit profile.
 
-![Profiles screen showing System profiles section with ready-made profiles such as Asset Librarian and Content Explorer, plus the organization's custom profiles and the New Profile button.](assets/profiles-screen.png)
+Profiles screen showing System profiles section with predefined profiles such as Asset Librarian and Content Explorer, plus the organization's custom profiles and the New Profile button.
 
 A profile works best when it supports one well-defined job. When in doubt:
 
@@ -306,7 +301,7 @@ Both connect AI agents to Contentstack and cover the same kinds of work. They di
 | Tool selection | Tool groups (`cma`, `launch`, and so on). Each group loads its full toolset, up to 77 tools for CMA alone | Curated per profile. You expose exactly the tools a job needs, nothing more        |
 
 
-In short: the MCP Server gives a developer the full toolset on their own machine, MCP Profile Hub gives anyone a scoped toolset from any client, shareable across a team.
+The MCP Server gives a developer the full toolset on their own machine. MCP Profile Hub gives any user a scoped toolset from any client, shared across a team.
 
 ### Authentication and permissions
 
@@ -346,7 +341,7 @@ All profile activity is logged. A log entry captures the user, profile, client, 
 
 The MCP Profile Hub app includes an **Executions** view: a searchable, filterable history of tool calls across your profiles. Each entry shows the status (running, completed, or failed), the profile and tool involved, timing, any error message, and expandable request metadata.
 
-TODO(screenshot): Executions view. It should show a filterable list of tool calls with status badges, profile and tool names, timestamps, and one expanded row with request metadata or an error message.
+![Executions view with a search bar and All statuses and All profiles filters, listing tool calls with a status badge (Completed, Running, or Failed), profile name, tool name, and timestamp, including a failed create_an_entry_variant call with its HTTP 412 error message shown inline.](assets/executions-view.png)
 
 Use it to:
 
