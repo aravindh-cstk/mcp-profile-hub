@@ -142,7 +142,7 @@ Every failure appears under the heading `Couldn't import profile`.
 | `A profile with this profile_id already exists` | You already have a profile of that name | Rename the profile before importing |
 | `Profile limit of 50 reached; delete an existing profile first` | You hold the maximum number of profiles | Delete a profile you no longer use |
 | `Organization profile limit of 500 reached; ask an administrator to remove unused profiles` | Your organization holds the maximum | Ask an admin to remove unused profiles |
-| `This organization's plan does not include launch. Remove the tools from that catalog and save again.` | The file contains tools your plan excludes, see [Profiles and catalogs](/docs/mcp/profiles-and-catalogs#your-plan-decides-which-catalogs-you-see) | Remove those tools, or import into an organization on a plan that includes them |
+| `This organization's plan does not include launch. Remove the tools from that catalog and save again.` | The file contains tools your plan excludes, see [Profiles and catalogs](/docs/mcp/profiles-and-catalogs#plan-gated-catalogs) | Remove those tools, or import into an organization on a plan that includes them |
 
 ## Edit a profile
 

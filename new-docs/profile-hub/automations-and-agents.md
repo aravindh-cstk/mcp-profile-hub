@@ -29,7 +29,7 @@ Prefer an automation when the work is deterministic. Use an agent when the reque
 
 ## Add them to a profile
 
-Automations and agents are selected in the same tool browser as everything else. Follow [Step 1: Select tools](/docs/mcp/create-a-profile#step-1-select-tools), and in the browser open the `Automations` or `AI agents` tab instead of `Contentstack APIs`.
+You select automations and agents in the same tool browser as everything else. Follow [Step 1: Select tools](/docs/mcp/create-a-profile#step-1-select-tools), and in the browser open the `Automations` or `AI agents` tab instead of `Contentstack APIs`.
 
 Both tabs list entries by project rather than by catalog. They appear only when your organization has automations or agents that qualify (see [What qualifies](#what-qualifies) below). An organization using neither sees only the `Contentstack APIs` tools.
 
@@ -45,7 +45,7 @@ Contentstack lists an automation or an agent only when it can call it over HTTP.
 | Active | You activate it in Automate. Contentstack lists neither drafts nor paused automations | You activate it in Agent OS |
 | Published | n/a | You publish it in Agent OS. Contentstack does not list a draft agent |
 | Trigger ID | Required | n/a |
-| Secure HTTP Trigger | Must be off. Contentstack cannot detect it on an automation, so a secured automation still appears and fails when called | Must be off. Contentstack detects it on an agent, so a secured agent never appears |
+| Secure HTTP Trigger | Must be off. Contentstack cannot detect it on an automation, so a secured automation still appears and fails when the agent calls it | Must be off. Contentstack detects it on an agent, so a secured agent never appears |
 
 Meeting every row makes an automation or agent eligible, but eligibility does not guarantee it appears in the tool browser (see [Limitations](#limitations)).
 
@@ -89,7 +89,7 @@ The two reach Automate through different doors, which is why one cannot stand in
 | Calls | The Automate management API, with your Open Authorization (OAuth) token | The automation's own HTTP trigger URL |
 | Covers | Any automation the API exposes to your account | Only automations that meet [What qualifies](#what-qualifies) |
 | Returns | The management API's response | The automation's response payload, or an acknowledgement |
-| Input schema | The management API's own parameters | Built from the automation's declared inputs, so the model can fill them |
+| Input schema | The management API's own parameters | Contentstack builds it from the automation's declared inputs, so the model can fill them |
 
 Use the **Automate** catalog to manage automations. Use the `Automations` tab to run yours, because that is the path that gives the model a real input schema and returns your automation's output.
 
@@ -106,23 +106,23 @@ Automation "<AUTOMATION_ID>" uses a secure HTTP trigger, which is not supported 
 Disable Secure HTTP Trigger on the automation, or pick a different automation.
 ```
 
-**Root cause:** Contentstack cannot detect Secure HTTP Trigger on an automation the way it can on an agent, so a secured automation still appears in the tool browser and can be added to a profile. The call only fails once the agent runs it.
+**Root Cause**: Contentstack cannot detect Secure HTTP Trigger on an automation the way it can on an agent, so a secured automation still appears in the tool browser and can be added to a profile. The call only fails once the agent runs it.
 
-**Resolution:** Turn off Secure HTTP Trigger on the automation in Automate, or pick a different automation.
+**Resolution**: Turn off Secure HTTP Trigger on the automation in Automate, or pick a different automation.
 
 **An agent run times out before finishing**
 
-**Root cause:** The run outlasted the profile's timeout, capped at 120000 ms.
+**Root Cause**: The run outlasted the profile's timeout, which Contentstack caps at 120000 ms.
 
-**Resolution:** Raise `timeout` on the connector URL. See [MCP URL parameters](/docs/mcp/mcp-url-parameters), or look up the reported execution ID in Agent OS to see the result.
+**Resolution**: Raise `timeout` on the connector URL. See [MCP URL parameters](/docs/mcp/mcp-url-parameters), or look up the reported execution ID in Agent OS to see the result.
 
 ## Limitations
 
 - Discovery covers up to 50 projects per organization.
 - Contentstack caches the discovered list for five minutes. A newly activated automation can take that long to appear.
 - Discovery runs on an eight second budget. If it does not finish, the tab shows fewer entries than exist.
-- An agent run is capped at 120000 ms by the profile's timeout. See [MCP URL parameters](/docs/mcp/mcp-url-parameters) to raise it.
-- A secured automation can still be added to a profile and fail when called. See [Troubleshooting](#troubleshooting).
+- The profile's timeout caps an agent run at 120000 ms. See [MCP URL parameters](/docs/mcp/mcp-url-parameters) to raise it.
+- You can still add a secured automation to a profile, and it fails when the agent calls it. See [Troubleshooting](#troubleshooting).
 - An exported profile carries no automations or agents. See [Exports drop these tools](#exports-drop-these-tools).
 
 ## Next Steps

@@ -174,25 +174,25 @@ Contentstack raises the pinned version from time to time. When that happens, eve
 
 ### The Add to Claude button does nothing
 
-**Root Cause(s)**: Claude Enterprise and Team plans restrict custom connectors to organization admins.
+**Root Cause**: Claude Enterprise and Team plans restrict custom connectors to organization admins.
 
 **Resolution**: Use the **Claude Desktop Manual** tab instead, or ask an admin to add the connector for your organization.
 
 ### Two browser tabs open during sign-in
 
-**Root Cause(s)**: Claude Desktop's sign-in for servers added through the manual config occasionally opens two browser tabs at once.
+**Root Cause**: Claude Desktop's sign-in for servers added through the manual config occasionally opens two browser tabs at once.
 
 **Resolution**: Complete the sign-in in the first tab and close the other. If the profile's tools still do not appear, restart Claude Desktop and sign in again.
 
 ### The claude mcp add command fails
 
-**Root Cause(s)**: An unquoted connector URL lets the shell read `?` and `&` as shell syntax instead of part of the URL.
+**Root Cause**: An unquoted connector URL lets the shell read `?` and `&` as shell syntax instead of part of the URL.
 
 **Resolution**: Keep the URL quoted when you run `claude mcp add`.
 
 ### The server does not appear after editing claude_desktop_config.json
 
-**Root Cause(s)**: Claude Desktop reads `claude_desktop_config.json` only at launch.
+**Root Cause**: Claude Desktop reads `claude_desktop_config.json` only at launch.
 
 **Resolution**: Restart Claude Desktop.
 
