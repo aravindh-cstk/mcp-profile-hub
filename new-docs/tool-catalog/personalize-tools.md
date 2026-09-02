@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/personalize-tools
+url: /developers/mcp-personalize-tools
 seo_title: Personalize tools
 seo_description: ""
 ---

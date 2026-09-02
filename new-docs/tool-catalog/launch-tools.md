@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/launch-tools
+url: /developers/mcp-launch-tools
 seo_title: Launch tools
 seo_description: ""
 ---

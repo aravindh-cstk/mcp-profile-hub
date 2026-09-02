@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/connect-a-client-to-profile-hub
+url: /developers/mcp-connect-a-client-to-profile-hub
 seo_title: Connect a client to MCP Profile Hub
 seo_description: Connect Claude, Claude Code, Cursor, Codex, ChatGPT, or any MCP client to an MCP Profile Hub profile over HTTP, with OAuth sign-in in the browser.
 ---
@@ -31,7 +31,7 @@ The profile's **Installation** step offers six tabs. Each one generates a snippe
 
 ## Prerequisites
 
-- A published profile and its connector URL. An unpublished profile returns no tools to the client even though the connection succeeds. See [Create a profile](/docs/mcp/create-a-profile).
+- A published profile and its connector URL. An unpublished profile returns no tools to the client even though the connection succeeds. See [Create a profile](/developers/mcp-create-a-profile).
 - An MCP-compatible client. See [Pick an installation tab](#pick-an-installation-tab) for the six clients with generated snippets, or any client that speaks Streamable HTTP.
 - For the **Claude Desktop Manual** path or any other stdio-only client, install Node.js to run the `mcp-remote` bridge. Without Node.js, the `npx` command fails and the server never starts.
 - A Contentstack account whose roles already allow the operations the profile exposes. Connecting succeeds regardless, but a tool call fails at run time if your role does not permit it, because a profile never grants access beyond your existing roles. See [About Product Roles](https://www.contentstack.com/docs/administration/about-product-roles) for organization-level access, and [About Stack Roles](https://www.contentstack.com/docs/headless-cms/about-stack-roles) for content tools.
@@ -196,11 +196,11 @@ Contentstack raises the pinned version from time to time. When that happens, eve
 
 **Resolution**: Restart Claude Desktop.
 
-If tools do not appear or a call fails for another reason, see [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot). Start with the **Executions** view in the app, which shows a clear error message and request metadata for most failures.
+If tools do not appear or a call fails for another reason, see [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot). Start with the **Executions** view in the app, which shows a clear error message and request metadata for most failures.
 
 ## Next Steps
 
-- [MCP authentication](/docs/mcp/mcp-authentication): the OAuth sign-in flow and token handling.
-- [MCP URL parameters](/docs/mcp/mcp-url-parameters): configure a stack, branch, or project from the connector URL.
-- [Profiles and catalogs](/docs/mcp/profiles-and-catalogs): what a profile exposes.
-- [MCP at Contentstack](/docs/mcp/mcp-at-contentstack): compare Profile Hub against the other Contentstack MCP options.
+- [MCP authentication](/developers/mcp-authentication): the OAuth sign-in flow and token handling.
+- [MCP URL parameters](/developers/mcp-url-parameters): configure a stack, branch, or project from the connector URL.
+- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): what a profile exposes.
+- [MCP at Contentstack](/developers/mcp-at-contentstack): compare Profile Hub against the other Contentstack MCP options.

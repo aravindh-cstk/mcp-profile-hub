@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/authenticate-api-requests
+url: /developers/mcp-authenticate-api-requests
 seo_title: Authenticate API requests
 seo_description: ""
 ---

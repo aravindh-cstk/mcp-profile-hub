@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/automations-tools
+url: /developers/mcp-automations-tools
 seo_title: Automations tools
 seo_description: ""
 ---

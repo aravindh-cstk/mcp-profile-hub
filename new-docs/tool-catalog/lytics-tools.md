@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/lytics-tools
+url: /developers/mcp-lytics-tools
 seo_title: Lytics tools
 seo_description: ""
 ---

@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/mcp-regions-and-base-urls
+url: /developers/mcp-regions-and-base-urls
 seo_title: MCP regions and base URLs
 seo_description: ""
 ---

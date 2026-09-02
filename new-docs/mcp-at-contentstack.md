@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/mcp-at-contentstack
+url: /developers/mcp-at-contentstack
 seo_title: MCP at Contentstack
 seo_description: Compare the Contentstack MCP products and choose the right one, the hosted MCP Profile Hub, the local MCP Server, building your own with the Tool Definitions API, or the Agent OS MCP Client.
 ---
@@ -28,22 +28,22 @@ Contentstack provides four MCP products. Three let an AI client control Contents
 
 ## Contentstack MCP Profile Hub
 
-Hosted profiles that expose a scoped set of Contentstack tools over HTTP. Nothing to install. Connect any MCP client, including web clients, and share a profile across your team. Start with [What is MCP Profile Hub](/docs/mcp/what-is-profile-hub).
+Hosted profiles that expose a scoped set of Contentstack tools over HTTP. Nothing to install. Connect any MCP client, including web clients, and share a profile across your team. Start with [What is MCP Profile Hub](/developers/mcp-what-is-profile-hub).
 
 ## Contentstack MCP Server
 
-A local server you run with `npx @contentstack/mcp`. It gives a single machine the full Contentstack toolset, loaded by group. Start with [What is the Contentstack MCP Server](/docs/mcp/what-is-the-mcp-server).
+A local server you run with `npx @contentstack/mcp`. It gives a single machine the full Contentstack toolset, loaded by group. Start with [What is the Contentstack MCP Server](/developers/mcp-what-is-the-mcp-server).
 
 ## Build your own MCP
 
-Contentstack publishes its tool definitions at public HTTPS endpoints. Use them to build your own MCP server, agent framework, or API client. Start with [When to build your own MCP](/docs/mcp/when-to-build-your-own-mcp).
+Contentstack publishes its tool definitions at public HTTPS endpoints. Use them to build your own MCP server, agent framework, or API client. Start with [When to build your own MCP](/developers/mcp-when-to-build-your-own-mcp).
 
 ## Agent OS MCP Client
 
-The MCP Client is an Agent OS tool that connects an agent to a remote third-party MCP server, so the agent can act in services such as Jira, Notion, or Slack. This is the opposite direction from the products above. See [MCP Client: Connect Remote Tools](/docs/agent-os/mcp-client-connect-remote-tools).
+The MCP Client is an Agent OS tool that connects an agent to a remote third-party MCP server, so the agent can act in services such as Jira, Notion, or Slack. This is the opposite direction from the products above. See [MCP Client: Connect Remote Tools](/agent-os/mcp-client-connect-remote-tools).
 
 ## Next Steps
 
-- [MCP authentication](/docs/mcp/mcp-authentication): OAuth, management tokens, delivery tokens, and per-service headers.
-- [MCP regions and base URLs](/docs/mcp/mcp-regions-and-base-urls): region codes and endpoint resolution.
-- Tool catalog: the tools in each Contentstack service. Start with [Content Management API tools](/docs/mcp/cma-tools).
+- [MCP authentication](/developers/mcp-authentication): OAuth, management tokens, delivery tokens, and per-service headers.
+- [MCP regions and base URLs](/developers/mcp-regions-and-base-urls): region codes and endpoint resolution.
+- Tool catalog: the tools in each Contentstack service. Start with [Content Management API tools](/developers/mcp-cma-tools).

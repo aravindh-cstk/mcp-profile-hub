@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/test-and-deploy-to-production
+url: /developers/mcp-test-and-deploy-to-production
 seo_title: Test and deploy to production
 seo_description: ""
 ---

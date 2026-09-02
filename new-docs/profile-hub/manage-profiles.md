@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/manage-profiles
+url: /developers/mcp-manage-profiles
 seo_title: Manage profiles
 seo_description: Duplicate, export, and import MCP Profile Hub profiles as JSON, edit an existing profile, and understand what carries over in each case.
 ---
@@ -13,7 +13,7 @@ Beyond creating a profile, you can duplicate one, export it as JSON, and import 
 
 ## Prerequisites
 
-- An existing profile to duplicate, export, edit, or delete. See [Create a profile](/docs/mcp/create-a-profile).
+- An existing profile to duplicate, export, edit, or delete. See [Create a profile](/developers/mcp-create-a-profile).
 - The organization role that permits creating and deleting profiles.
 
 ## Where the controls are
@@ -102,7 +102,7 @@ The file describes the profile and its tools. Every value below is illustrative 
 An export carries no credentials and no stack binding.
 
 - **No configuration.** The file holds no stack API key, no project UIDs, no branch, environment, or locale. Whoever imports it selects their own.
-- **No automation or agent tools.** An automation's trigger ID works as an unauthenticated webhook, so sharing it in a file would share the ability to run that automation. See [Automations and agents as tools](/docs/mcp/automations-and-agents) for what these tools are. Contentstack drops these tools from the export and reports the number it dropped:
+- **No automation or agent tools.** An automation's trigger ID works as an unauthenticated webhook, so sharing it in a file would share the ability to run that automation. See [Automations and agents as tools](/developers/mcp-automations-and-agents) for what these tools are. Contentstack drops these tools from the export and reports the number it dropped:
 
   ```
   Exported without 2 automation or agent tools
@@ -142,11 +142,11 @@ Every failure appears under the heading `Couldn't import profile`.
 | `A profile with this profile_id already exists` | You already have a profile of that name | Rename the profile before importing |
 | `Profile limit of 50 reached; delete an existing profile first` | You hold the maximum number of profiles | Delete a profile you no longer use |
 | `Organization profile limit of 500 reached; ask an administrator to remove unused profiles` | Your organization holds the maximum | Ask an admin to remove unused profiles |
-| `This organization's plan does not include launch. Remove the tools from that catalog and save again.` | The file contains tools your plan excludes, see [Profiles and catalogs](/docs/mcp/profiles-and-catalogs#plan-gated-catalogs) | Remove those tools, or import into an organization on a plan that includes them |
+| `This organization's plan does not include launch. Remove the tools from that catalog and save again.` | The file contains tools your plan excludes, see [Profiles and catalogs](/developers/mcp-profiles-and-catalogs#plan-gated-catalogs) | Remove those tools, or import into an organization on a plan that includes them |
 
 ## Edit a profile
 
-Hover the profile card and click **Edit** to reopen a profile any time and change its tools or configuration. Editing reopens the same three-step wizard described in [Create a profile](/docs/mcp/create-a-profile). The `profile_id` and connector URL stay stable, so connected clients keep working after you edit it.
+Hover the profile card and click **Edit** to reopen a profile any time and change its tools or configuration. Editing reopens the same three-step wizard described in [Create a profile](/developers/mcp-create-a-profile). The `profile_id` and connector URL stay stable, so connected clients keep working after you edit it.
 
 Adding tools can widen the Open Authorization (OAuth) scopes the profile requests. Connected users approve the new scopes the next time they sign in.
 
@@ -158,11 +158,11 @@ A profile carries an `enabled` flag. Disabling it takes effect immediately for e
 
 The flag lives on `POST` and `PUT /api/profiles`, but that endpoint is internal to the app. It authenticates with a short-lived token the dashboard mints for its own use and never displays, not with a management token, a delivery token, or an API key.
 
-If a client connects successfully but lists no tools, a disabled profile is one possible cause. See [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot).
+If a client connects successfully but lists no tools, a disabled profile is one possible cause. See [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot).
 
 ## Delete a profile
 
-**Warning:** Deleting a profile immediately breaks every client anyone has connected to its URL, not only your own. Check the [Executions](/docs/mcp/monitor-and-troubleshoot) view for recent activity before deleting a shared profile.
+**Warning:** Deleting a profile immediately breaks every client anyone has connected to its URL, not only your own. Check the [Executions](/developers/mcp-monitor-and-troubleshoot) view for recent activity before deleting a shared profile.
 
 Hover the profile card and click **Delete**. System profiles have no Delete action, because every organization keeps them.
 
@@ -177,6 +177,6 @@ These caps apply whether you create, duplicate, or import a profile.
 
 ## Next Steps
 
-- [Connect a client to Profile Hub](/docs/mcp/connect-a-client-to-profile-hub): the install snippet for each client, useful after you duplicate or import a profile.
-- [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot): the Executions view and the full error reference.
-- [Automations and agents as tools](/docs/mcp/automations-and-agents): how to re-add the automation tools an export drops.
+- [Connect a client to Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): the install snippet for each client, useful after you duplicate or import a profile.
+- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): the Executions view and the full error reference.
+- [Automations and agents as tools](/developers/mcp-automations-and-agents): how to re-add the automation tools an export drops.

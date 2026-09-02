@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/analytics-tools
+url: /developers/mcp-analytics-tools
 seo_title: Analytics tools
 seo_description: ""
 ---

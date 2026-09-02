@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/what-is-profile-hub
+url: /developers/mcp-what-is-profile-hub
 seo_title: What is MCP Profile Hub?
 seo_description: MCP Profile Hub is a hosted Contentstack app that exposes scoped sets of Contentstack tools as profiles you connect to AI clients over HTTP.
 ---
@@ -9,7 +9,7 @@ seo_description: MCP Profile Hub is a hosted Contentstack app that exposes scope
 
 ## Overview
 
-MCP Profile Hub is a Contentstack Marketplace app that lets you create profiles: small, tightly scoped [MCP](/docs/mcp/mcp-at-contentstack) integrations that expose only the Contentstack tools a specific job needs. You publish a profile once, then connect it to any MCP-compatible client.
+MCP Profile Hub is a Contentstack Marketplace app that lets you create profiles: small, tightly scoped [MCP](/developers/mcp-at-contentstack) integrations that expose only the Contentstack tools a specific job needs. You publish a profile once, then connect it to any MCP-compatible client.
 
 ## What a profile exposes
 
@@ -28,7 +28,7 @@ Every profile is:
 
 - **Scoped:** the model sees only the tools the profile exposes, never the whole platform.
 - **Contextual:** tools reflect your real content models, locales, branches, and environments.
-- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing roles, and the app logs every action. See [MCP authentication](/docs/mcp/mcp-authentication).
+- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing roles, and the app logs every action. See [MCP authentication](/developers/mcp-authentication).
 
 ## Who uses MCP Profile Hub
 
@@ -41,7 +41,7 @@ This app serves:
 
 ## Profile Hub compared with the MCP Server
 
-Both MCP Profile Hub and the [Contentstack MCP Server](/docs/mcp/what-is-the-mcp-server) connect AI agents to Contentstack and cover the same kinds of work. They differ in how you install them and in the number of tools your agent ends up with.
+Both MCP Profile Hub and the [Contentstack MCP Server](/developers/mcp-what-is-the-mcp-server) connect AI agents to Contentstack and cover the same kinds of work. They differ in how you install them and in the number of tools your agent ends up with.
 
 | | Contentstack MCP Server | MCP Profile Hub |
 | --- | --- | --- |
@@ -55,14 +55,14 @@ The MCP Server gives a developer the full toolset on their own machine. MCP Prof
 
 An MCP Profile Hub setup involves three pieces:
 
-1. **Profiles:** the scoped tool bundles you create and publish in the app. See [Profiles and catalogs](/docs/mcp/profiles-and-catalogs).
+1. **Profiles:** the scoped tool bundles you create and publish in the app. See [Profiles and catalogs](/developers/mcp-profiles-and-catalogs).
 2. **The hosted runtime** at `mcp-profile-hub.contentstack.com`: it loads the profile, authenticates you, applies stack context, checks permissions, and runs operations.
 3. **MCP clients:** any MCP-compatible app (Claude, Claude Code, Cursor, Codex, ChatGPT, and others) that connects to a profile's connector URL.
 
 The lifecycle:
 
-1. Create a profile in the app: pick tools, configure a stack, and publish. You get a connector URL. See [Create a profile](/docs/mcp/create-a-profile).
-2. Add the connector URL to your MCP client. The client opens a browser for Contentstack OAuth. You sign in and approve the requested scopes. See [Connect a client to MCP Profile Hub](/docs/mcp/connect-a-client-to-profile-hub).
+1. Create a profile in the app: pick tools, configure a stack, and publish. You get a connector URL. See [Create a profile](/developers/mcp-create-a-profile).
+2. Add the connector URL to your MCP client. The client opens a browser for Contentstack OAuth. You sign in and approve the requested scopes. See [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub).
 3. When the client calls a tool, the runtime validates your token, resolves the target stack, applies context, checks your permissions, runs the operation, and logs the result.
 
 The runtime pipeline behind step 3:
@@ -87,7 +87,7 @@ https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=<PROFILE_ID>&org_uid
 
 The profile URL is safe to share, because identity comes entirely from OAuth rather than from anything in the URL. Neither value in it is a secret. The `profile_id` names which profile the connection uses. The `org_uid` is a sign-in hint that helps the OAuth flow find your organization on first connect, and it has no effect on a tool call, because Contentstack resolves your organization from the session you signed in with. The Installation screen pre-fills both in the URL you copy.
 
-You can point a shared system profile at your own stack, branch, or project without saving anything in the app. Configure it entirely from that URL instead. See [MCP URL parameters](/docs/mcp/mcp-url-parameters).
+You can point a shared system profile at your own stack, branch, or project without saving anything in the app. Configure it entirely from that URL instead. See [MCP URL parameters](/developers/mcp-url-parameters).
 
 ### Tools adapt to your stack
 
@@ -105,7 +105,7 @@ The app's **Executions** view is a searchable history of those calls.
 
 TODO(screenshot): Executions view. It should show a filterable list of tool calls with status badges, the client chip, profile and tool names, timestamps, and one expanded row showing request metadata or an error message.
 
-The Executions view is also where you diagnose a failed call from its error message. See [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot) for how to read one.
+The Executions view is also where you diagnose a failed call from its error message. See [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot) for how to read one.
 
 ## Limitations
 
@@ -115,7 +115,7 @@ The Executions view is also where you diagnose a failed call from its error mess
 
 ## Next Steps
 
-- [Create a profile](/docs/mcp/create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
-- [Connect a client to MCP Profile Hub](/docs/mcp/connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
-- [Profiles and catalogs](/docs/mcp/profiles-and-catalogs): how catalogs group the tools a profile can expose.
-- [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.
+- [Create a profile](/developers/mcp-create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
+- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
+- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): how catalogs group the tools a profile can expose.
+- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.

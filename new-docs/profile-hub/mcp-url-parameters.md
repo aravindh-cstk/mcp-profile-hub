@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/mcp-url-parameters
+url: /developers/mcp-url-parameters
 seo_title: MCP URL parameters
 seo_description: Configure an MCP Profile Hub profile from its connector URL, including the stack, branch, environment, and project parameters, and their precedence.
 ---
@@ -23,7 +23,7 @@ Two people can connect to the same system profile and work against different sta
 
 Every parameter is optional. When you omit one, Contentstack uses the profile's saved configuration.
 
-Content Management API (CMA) and Content Delivery API (CDA) are two of the catalogs a profile can include. See [Profiles and catalogs](/docs/mcp/profiles-and-catalogs#catalogs).
+Content Management API (CMA) and Content Delivery API (CDA) are two of the catalogs a profile can include. See [Profiles and catalogs](/developers/mcp-profiles-and-catalogs#catalogs).
 
 | Parameter | Required | Aliases | Sets | Constraint | If invalid |
 | --- | --- | --- | --- | --- | --- |
@@ -140,6 +140,6 @@ Because Contentstack resolves your organization from the session you signed in w
 
 ## Next Steps
 
-- [Create a profile](/docs/mcp/create-a-profile): the wizard, and which connections it asks for.
-- [Connect a client to MCP Profile Hub](/docs/mcp/connect-a-client-to-profile-hub): install snippets per client.
-- [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot): what a failed connection reports.
+- [Create a profile](/developers/mcp-create-a-profile): the wizard, and which connections it asks for.
+- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): install snippets per client.
+- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): what a failed connection reports.

@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/build-the-mcp-server
+url: /developers/mcp-build-the-mcp-server
 seo_title: Build the MCP server
 seo_description: ""
 ---

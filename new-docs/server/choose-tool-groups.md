@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/choose-tool-groups
+url: /developers/mcp-choose-tool-groups
 seo_title: Choose tool groups
 seo_description: ""
 ---

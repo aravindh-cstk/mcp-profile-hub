@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/profiles-and-catalogs
+url: /developers/mcp-profiles-and-catalogs
 seo_title: Profiles and catalogs
 seo_description: How MCP Profile Hub profiles bundle tools, configuration, and scope, the system profiles Contentstack ships, and the tool catalogs a profile draws from.
 ---
@@ -22,7 +22,7 @@ A profile bundles:
 
 System profiles are ready-to-use profiles available to every organization. Pick a stack, install, and use them. The **Profiles** screen splits them into two tabs.
 
-You cannot edit a system profile beyond its configuration. To change which tools one exposes, duplicate it first, which produces an editable custom copy. See [Manage profiles](/docs/mcp/manage-profiles).
+You cannot edit a system profile beyond its configuration. To change which tools one exposes, duplicate it first, which produces an editable custom copy. See [Manage profiles](/developers/mcp-manage-profiles).
 
 ### Contentstack products
 
@@ -59,7 +59,7 @@ Browse the **Specialty profiles** tab in the app for the current list.
 
 ## Custom profiles
 
-Your organization creates custom profiles from the tool browser to match your own jobs, for example a regional publishing assistant, a localization workflow profile, or a content audit profile. To build one, see [Create a profile](/docs/mcp/create-a-profile).
+Your organization creates custom profiles from the tool browser to match your own jobs, for example a regional publishing assistant, a localization workflow profile, or a content audit profile. To build one, see [Create a profile](/developers/mcp-create-a-profile).
 
 Duplicating a system profile is the other way to get a custom one, because a duplicate is always custom and always editable. See [System profiles](#system-profiles).
 
@@ -77,7 +77,7 @@ A profile draws tools from three tiers. The tool browser shows each tier as a ta
 
 The tool browser also groups tools by area, for example Entry Management or Content Types.
 
-The `Automations` and `AI agents` tabs cover work you have already built in Contentstack. One call runs a whole workflow instead of the agent chaining many API operations. See [Automations and agents as tools](/docs/mcp/automations-and-agents).
+The `Automations` and `AI agents` tabs cover work you have already built in Contentstack. One call runs a whole workflow instead of the agent chaining many API operations. See [Automations and agents as tools](/developers/mcp-automations-and-agents).
 
 The tab strip appears only when more than one tier has content. If your organization uses neither Automate nor Agent OS, the browser shows the Contentstack API tools with no tabs.
 
@@ -102,7 +102,7 @@ The **Automate** catalog manages Automate itself. To call your own automations, 
 
 Catalog names appear in two forms in the product, and both are correct. The tool browser closes them up (`BrandKit`, `DeveloperHub`), while profile cards and the configuration wizard space them out (Brand Kit, Developer Hub). Search the tool browser using the closed-up form.
 
-For the full tool list per service, see the [tool catalog](/docs/mcp/cma-tools).
+For the full tool list per service, see the [tool catalog](/developers/mcp-cma-tools).
 
 ## Operation tags
 
@@ -141,8 +141,8 @@ Required OAuth scopes come from your tool selection, so a wider selection asks t
 
 ## Next Steps
 
-- [Create a profile](/docs/mcp/create-a-profile): build a custom profile from the tool catalog.
-- [Manage profiles](/docs/mcp/manage-profiles): duplicate, export, import, enable, and delete existing profiles.
-- [Connect a client to MCP Profile Hub](/docs/mcp/connect-a-client-to-profile-hub): install a profile into Claude, Cursor, Codex, or another MCP client.
-- [Automations and agents as tools](/docs/mcp/automations-and-agents): expose Automate automations and Agent OS agents as single tools.
-- [MCP URL parameters](/docs/mcp/mcp-url-parameters): override stack, branch, environment, and locale per connection.
+- [Create a profile](/developers/mcp-create-a-profile): build a custom profile from the tool catalog.
+- [Manage profiles](/developers/mcp-manage-profiles): duplicate, export, import, enable, and delete existing profiles.
+- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): install a profile into Claude, Cursor, Codex, or another MCP client.
+- [Automations and agents as tools](/developers/mcp-automations-and-agents): expose Automate automations and Agent OS agents as single tools.
+- [MCP URL parameters](/developers/mcp-url-parameters): override stack, branch, environment, and locale per connection.

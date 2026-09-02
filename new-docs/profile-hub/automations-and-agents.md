@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/automations-and-agents
+url: /developers/mcp-automations-and-agents
 seo_title: Automations and agents as tools
 seo_description: Expose your Contentstack Automate automations and Agent OS agents as MCP tools in a profile, including the trigger requirements each one must meet.
 ---
@@ -29,7 +29,7 @@ Prefer an automation when the work is deterministic. Use an agent when the reque
 
 ## Add them to a profile
 
-You select automations and agents in the same tool browser as everything else. Follow [Step 1: Select tools](/docs/mcp/create-a-profile#step-1-select-tools), and in the browser open the `Automations` or `AI agents` tab instead of `Contentstack APIs`.
+You select automations and agents in the same tool browser as everything else. Follow [Step 1: Select tools](/developers/mcp-create-a-profile#step-1-select-tools), and in the browser open the `Automations` or `AI agents` tab instead of `Contentstack APIs`.
 
 Both tabs list entries by project rather than by catalog. They appear only when your organization has automations or agents that qualify (see [What qualifies](#what-qualifies) below). An organization using neither sees only the `Contentstack APIs` tools.
 
@@ -72,7 +72,7 @@ The practical consequence: an automation that names its inputs clearly produces 
 
 > **Warning:** An automation's trigger ID works as an unauthenticated webhook. Anyone who has the ID can run that automation without signing in, so treat a trigger ID as a secret and do not share it in tickets, chat, or source control.
 
-Because of this, Contentstack excludes automations and agents from an exported profile. See [What an export leaves out](/docs/mcp/manage-profiles#what-an-export-leaves-out).
+Because of this, Contentstack excludes automations and agents from an exported profile. See [What an export leaves out](/developers/mcp-manage-profiles#what-an-export-leaves-out).
 
 ## Profiles created before the Automations tab existed
 
@@ -97,7 +97,7 @@ Connect an Automate project in the profile's configuration when the profile incl
 
 ## Troubleshooting
 
-If a tool does not appear or a call fails, see [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot), which carries the full `## Automation and agent errors` table and the **Executions** view.
+If a tool does not appear or a call fails, see [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot), which carries the full `## Automation and agent errors` table and the **Executions** view.
 
 **A published automation fails when the agent calls it, with a secure-trigger error**
 
@@ -114,19 +114,19 @@ Disable Secure HTTP Trigger on the automation, or pick a different automation.
 
 **Root Cause**: The run outlasted the profile's timeout, which Contentstack caps at 120000 ms.
 
-**Resolution**: Raise `timeout` on the connector URL. See [MCP URL parameters](/docs/mcp/mcp-url-parameters), or look up the reported execution ID in Agent OS to see the result.
+**Resolution**: Raise `timeout` on the connector URL. See [MCP URL parameters](/developers/mcp-url-parameters), or look up the reported execution ID in Agent OS to see the result.
 
 ## Limitations
 
 - Discovery covers up to 50 projects per organization.
 - Contentstack caches the discovered list for five minutes. A newly activated automation can take that long to appear.
 - Discovery runs on an eight second budget. If it does not finish, the tab shows fewer entries than exist.
-- The profile's timeout caps an agent run at 120000 ms. See [MCP URL parameters](/docs/mcp/mcp-url-parameters) to raise it.
+- The profile's timeout caps an agent run at 120000 ms. See [MCP URL parameters](/developers/mcp-url-parameters) to raise it.
 - You can still add a secured automation to a profile, and it fails when the agent calls it. See [Troubleshooting](#troubleshooting).
 - An exported profile carries no automations or agents. See [Exports drop these tools](#exports-drop-these-tools).
 
 ## Next Steps
 
-- [Create a profile](/docs/mcp/create-a-profile): pick automations and agents in the tool browser's wizard step.
-- [Manage profiles](/docs/mcp/manage-profiles): see what an export leaves out and how to re-add tools after an import.
-- [Monitor and troubleshoot](/docs/mcp/monitor-and-troubleshoot): read the Executions view and the full error reference for automation and agent failures.
+- [Create a profile](/developers/mcp-create-a-profile): pick automations and agents in the tool browser's wizard step.
+- [Manage profiles](/developers/mcp-manage-profiles): see what an export leaves out and how to re-add tools after an import.
+- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): read the Executions view and the full error reference for automation and agent failures.
