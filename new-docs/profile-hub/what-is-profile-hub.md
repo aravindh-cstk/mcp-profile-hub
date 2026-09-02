@@ -28,7 +28,7 @@ Every profile is:
 
 - **Scoped:** the model sees only the tools the profile exposes, never the whole platform.
 - **Contextual:** tools reflect your real content models, locales, branches, and environments.
-- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing [Contentstack roles](https://www.contentstack.com/docs/administration/about-product-roles), and the app logs every action.
+- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing Contentstack roles, and the app logs every action. See [Authentication and permissions](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions).
 
 ## Who uses MCP Profile Hub
 

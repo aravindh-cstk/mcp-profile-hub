@@ -162,6 +162,39 @@ Most clients list the connected server and its tools once auth completes. Ask th
 
 > List the assets in my stack.
 
+## Authentication and permissions
+
+MCP Profile Hub uses standard OAuth. There are no API keys to paste, share, or rotate.
+
+### How a client authenticates
+
+1. The client connects to the profile endpoint.
+2. It discovers the authorization endpoints automatically and runs OAuth 2.1 with Proof Key for Code Exchange (PKCE), registering itself through Dynamic Client Registration. You configure no client ID and no client secret.
+3. A browser opens. You sign in to Contentstack and approve the requested scopes.
+4. The client receives a short-lived token, caches it locally, and refreshes it as needed.
+
+### Scopes come from the tool selection
+
+Contentstack derives the OAuth scopes a profile requests from the tools it exposes. A read-only profile requests only read scopes, and adding a publishing tool pulls in the scope needed to publish. You approve the concrete set in the browser at connect time.
+
+Adding tools to a profile can therefore widen its scopes. Connected users approve the new ones the next time they sign in.
+
+### A profile never grants more than your roles allow
+
+Every call runs with your own Contentstack roles.
+
+- You can perform only the operations your account already allows.
+- A profile narrows what is available to the agent. It never widens what you can reach.
+- A call that exceeds your permissions fails. The profile is a gate, never an escalation path.
+
+See [About Product Roles](https://www.contentstack.com/docs/administration/about-product-roles) for organization-level access, and [About Stack Roles](https://www.contentstack.com/docs/headless-cms/about-stack-roles) for content tools.
+
+| Question | Answer |
+| --- | --- |
+| Do I need to create an API key? | No. Sign-in is OAuth, through the browser |
+| Is the connector URL sensitive? | No. The `profile_id` names a profile and is not a secret |
+| Can a shared profile give someone extra access? | No. Each person connects with their own sign-in and their own roles |
+
 ## Why Contentstack pins the mcp-remote version
 
 The generated snippets pin `mcp-remote` to an exact version rather than always taking the newest one. Take the version from the **Installation** step, which always shows the current one.
@@ -202,4 +235,5 @@ If tools do not appear or a call fails for another reason, see [Monitor and trou
 
 - [MCP URL parameters](/developers/mcp-url-parameters): configure a stack, branch, or project from the connector URL.
 - [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): what a profile exposes.
+- [Authentication and permissions](#authentication-and-permissions): how OAuth sign-in works, and why a profile can never grant more access than your roles allow.
 - [Contentstack MCP Server](https://www.contentstack.com/docs/developers/contentstack-mcp-server): the locally installed alternative, for when you want the full toolset on one machine instead of a scoped hosted profile.

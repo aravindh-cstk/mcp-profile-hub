@@ -1,6 +1,6 @@
 ---
 uid: "blt730ec114592936bf"
-url: "/agent-os/build-your-own-mcp-tool-tool-definition-api"
+url: "/developers/build-your-own-mcp-tool-tool-definition-api"
 seo_title: "Build Your Own MCP: Tool Definitions API | Contentstack"
 seo_description: "Fetch Contentstack tool definitions from public HTTPS endpoints to build your own MCP server, agent framework, or API client without vendoring the repository."
 ---

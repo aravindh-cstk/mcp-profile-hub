@@ -120,7 +120,7 @@ Contentstack returns these to the client as JSON-RPC error code `-32010` with th
 
 **Root Cause**: You have not completed OAuth for this profile, or the stored token expired.
 
-**Resolution**: Reconnect and sign in again. The error also carries an `authorization_url` you can open directly.
+**Resolution**: Reconnect and sign in again. The error also carries an `authorization_url` you can open directly. See [Authentication and permissions](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions).
 
 ### authorization_required, with reason insufficient_scope
 
@@ -142,7 +142,7 @@ scope to the curated list) and try again.
 
 **Root Cause**: Contentstack rejected the token, and refreshing it did not help.
 
-**Resolution**: Reconnect and sign in again.
+**Resolution**: Reconnect and sign in again. See [Authentication and permissions](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions).
 
 ### Profile scope mismatch
 
