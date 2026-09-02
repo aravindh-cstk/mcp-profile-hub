@@ -120,7 +120,7 @@ Contentstack returns these to the client as JSON-RPC error code `-32010` with th
 
 **Root Cause**: You have not completed OAuth for this profile, or the stored token expired.
 
-**Resolution**: Reconnect and sign in again. The error also carries an `authorization_url` you can open directly. See [MCP authentication](/developers/mcp-authentication).
+**Resolution**: Reconnect and sign in again. The error also carries an `authorization_url` you can open directly.
 
 ### authorization_required, with reason insufficient_scope
 
@@ -142,7 +142,7 @@ scope to the curated list) and try again.
 
 **Root Cause**: Contentstack rejected the token, and refreshing it did not help.
 
-**Resolution**: Reconnect and sign in again. See [MCP authentication](/developers/mcp-authentication).
+**Resolution**: Reconnect and sign in again.
 
 ### Profile scope mismatch
 
@@ -182,7 +182,7 @@ A profile never grants more access than your Contentstack roles already allow. I
 **Resolution**
 
 1. Confirm the configured stack API key is correct for your account.
-2. Confirm you signed in to the organization that owns the stack. Contentstack derives the regional endpoints from the organization you signed in with, so a stack in another region is unreachable on that session. See [Supported regions](/developers/contentstack-mcp-server#supported-regions) for the region codes, and [MCP URL parameters](/developers/mcp-url-parameters#sign-in-parameters) for the `cma_host` parameter.
+2. Confirm you signed in to the organization that owns the stack. Contentstack derives the regional endpoints from the organization you signed in with, so a stack in another region is unreachable on that session. See [Supported regions](https://www.contentstack.com/docs/developers/contentstack-mcp-server#supported-regions) for the region codes, and [MCP URL parameters](/developers/mcp-url-parameters#sign-in-parameters) for the `cma_host` parameter.
 
 ### This organization's plan does not include `<CATALOGS>`.
 

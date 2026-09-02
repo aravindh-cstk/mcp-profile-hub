@@ -9,7 +9,7 @@ seo_description: MCP Profile Hub is a hosted Contentstack app that exposes scope
 
 ## Overview
 
-MCP Profile Hub is a Contentstack Marketplace app that lets you create profiles: small, tightly scoped [MCP](/developers/mcp-at-contentstack) integrations that expose only the Contentstack tools a specific job needs. You publish a profile once, then connect it to any MCP-compatible client.
+MCP Profile Hub is a Contentstack Marketplace app that lets you create profiles: small, tightly scoped [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) integrations that expose only the Contentstack tools a specific job needs. You publish a profile once, then connect it to any MCP-compatible client.
 
 ## What a profile exposes
 
@@ -28,7 +28,7 @@ Every profile is:
 
 - **Scoped:** the model sees only the tools the profile exposes, never the whole platform.
 - **Contextual:** tools reflect your real content models, locales, branches, and environments.
-- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing roles, and the app logs every action. See [MCP authentication](/developers/mcp-authentication).
+- **Governed:** you sign in with Open Authorization (OAuth), operations run with your existing [Contentstack roles](https://www.contentstack.com/docs/administration/about-product-roles), and the app logs every action.
 
 ## Who uses MCP Profile Hub
 
@@ -41,7 +41,7 @@ This app serves:
 
 ## Profile Hub compared with the MCP Server
 
-Both MCP Profile Hub and the [Contentstack MCP Server](/developers/mcp-what-is-the-mcp-server) connect AI agents to Contentstack and cover the same kinds of work. They differ in how you install them and in the number of tools your agent ends up with.
+Both MCP Profile Hub and the [Contentstack MCP Server](https://www.contentstack.com/docs/developers/contentstack-mcp-server) connect AI agents to Contentstack and cover the same kinds of work. They differ in how you install them and in the number of tools your agent ends up with.
 
 | | Contentstack MCP Server | MCP Profile Hub |
 | --- | --- | --- |

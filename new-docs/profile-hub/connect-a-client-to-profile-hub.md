@@ -200,7 +200,6 @@ If tools do not appear or a call fails for another reason, see [Monitor and trou
 
 ## Next Steps
 
-- [MCP authentication](/developers/mcp-authentication): the OAuth sign-in flow and token handling.
 - [MCP URL parameters](/developers/mcp-url-parameters): configure a stack, branch, or project from the connector URL.
 - [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): what a profile exposes.
-- [MCP at Contentstack](/developers/mcp-at-contentstack): compare Profile Hub against the other Contentstack MCP options.
+- [Contentstack MCP Server](https://www.contentstack.com/docs/developers/contentstack-mcp-server): the locally installed alternative, for when you want the full toolset on one machine instead of a scoped hosted profile.

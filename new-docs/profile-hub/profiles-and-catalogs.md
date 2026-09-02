@@ -102,7 +102,7 @@ The **Automate** catalog manages Automate itself. To call your own automations, 
 
 Catalog names appear in two forms in the product, and both are correct. The tool browser closes them up (`BrandKit`, `DeveloperHub`), while profile cards and the configuration wizard space them out (Brand Kit, Developer Hub). Search the tool browser using the closed-up form.
 
-For the full tool list per service, see the [tool catalog](/developers/mcp-cma-tools).
+For the full tool list per service, see the [Tool Catalog](https://www.contentstack.com/docs/developers/contentstack-mcp-server#tool-catalog) in the Contentstack MCP Server documentation, which lists every tool in each group.
 
 ## Operation tags
 
