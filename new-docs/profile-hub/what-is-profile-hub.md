@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-what-is-profile-hub
+url: /developers/mcp-profile-hub-what-is-profile-hub
 seo_title: What is MCP Profile Hub?
 seo_description: MCP Profile Hub is a hosted Contentstack app that exposes scoped sets of Contentstack tools as profiles you connect to AI clients over HTTP.
 ---
@@ -32,7 +32,7 @@ Every profile has the three properties below:
 - **Contextual:** tool definitions include the content types, locales, branches, and environments in your stack.
 - **Governed:** you sign in with Open Authorization (OAuth), each operation runs with your existing Contentstack roles, and the app records each tool call in the **Executions** view.
 
-> **Additional Resource:** For more information on the OAuth sign-in, the scopes you approve, and how Contentstack applies your roles to each tool call, refer to the [Authentication and permissions](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions) documentation.
+> **Additional Resource:** For more information on the OAuth sign-in, the scopes you approve, and how Contentstack applies your roles to each tool call, refer to the [Authentication and permissions](/developers/mcp-profile-hub-connect-a-client-to-profile-hub#authentication-and-permissions) documentation.
 
 ## Who uses MCP Profile Hub
 
@@ -84,7 +84,7 @@ Neither value in the URL above is a secret, because Contentstack identifies you 
 
 You can set the stack, branch, or project of a shared system profile through query parameters in the connector URL, without changing the saved profile in the app.
 
-> **Additional Resource:** For more information on the query-string parameters that set the stack, branch, environment, and project for a single connection, and the order in which Contentstack applies them, refer to the [MCP URL parameters](/developers/mcp-url-parameters) documentation.
+> **Additional Resource:** For more information on the query-string parameters that set the stack, branch, environment, and project for a single connection, and the order in which Contentstack applies them, refer to the [MCP URL parameters](/developers/mcp-profile-hub-url-parameters) documentation.
 
 ### How a tool call works
 
@@ -124,7 +124,7 @@ MCP Profile Hub records the tool calls that each profile runs. Each entry captur
 
 ## Next Steps
 
-- [Create a profile](/developers/mcp-create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
-- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
-- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): the catalogs that group the tools a profile can expose.
-- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.
+- [Create a profile](/developers/mcp-profile-hub-create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
+- [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
+- [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs): the catalogs that group the tools a profile can expose.
+- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.

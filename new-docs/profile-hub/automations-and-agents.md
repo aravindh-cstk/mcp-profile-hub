@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-automations-and-agents
+url: /developers/mcp-profile-hub-automations-and-agents
 seo_title: Automations and agents as tools
 seo_description: Expose your Contentstack Automate automations and Agent OS agents as MCP tools in a profile, including the trigger requirements each one must meet.
 ---
@@ -27,7 +27,7 @@ Prefer an automation when the work is deterministic. Use an agent when the reque
 
 ## Add them to a profile
 
-You select automations and agents in the same tool browser as the Contentstack API tools. Follow [Step 1: Select tools](/developers/mcp-create-a-profile#step-1-select-tools), and in the browser open the **Automations** or **AI agents** tab instead of **Contentstack APIs**.
+You select automations and agents in the same tool browser as the Contentstack API tools. Follow [Step 1: Select tools](/developers/mcp-profile-hub-create-a-profile#step-1-select-tools), and in the browser open the **Automations** or **AI agents** tab instead of **Contentstack APIs**.
 
 Both tabs list entries by project rather than by catalog. They appear only when your organization has automations or agents that qualify, as described in [What qualifies](#what-qualifies). In an organization using neither, only the **Contentstack APIs** tools appear.
 
@@ -78,7 +78,7 @@ Agent runs are asynchronous. The runtime polls until the agent finishes or the p
 
 > **Warning:** An automation's HTTP trigger URL is unauthenticated. Anyone who has the trigger ID can run that automation without signing in, so treat a trigger ID as a secret and do not share it in tickets, chat, or source control.
 
-Because of this, Contentstack excludes automations and agents from an [exported profile](/developers/mcp-manage-profiles#what-an-export-leaves-out). You re-add them manually after an import.
+Because of this, Contentstack excludes automations and agents from an [exported profile](/developers/mcp-profile-hub-manage-profiles#what-an-export-leaves-out). You re-add them manually after an import.
 
 ## Profiles created before the Automations tab existed
 
@@ -103,11 +103,11 @@ Use the **Automations** tab whenever the automation qualifies, and the **Automat
 
 **Automate catalog tools need a project.**
 
-Select one in the [profile's configuration](/developers/mcp-create-a-profile#skipping-an-optional-connection), or have the agent supply `project_uid` on each call.
+Select one in the [profile's configuration](/developers/mcp-profile-hub-create-a-profile#skipping-an-optional-connection), or have the agent supply `project_uid` on each call.
 
 ## Troubleshooting
 
-If a tool does not appear or a call fails, see [Automation and agent errors](/developers/mcp-monitor-and-troubleshoot#automation-and-agent-errors) for the full error list, and the **Executions** view on the same page.
+If a tool does not appear or a call fails, see [Automation and agent errors](/developers/mcp-profile-hub-monitor-and-troubleshoot#automation-and-agent-errors) for the full error list, and the **Executions** view on the same page.
 
 **A published automation fails when the agent calls it, with a secure-trigger error**
 
@@ -124,19 +124,19 @@ Disable Secure HTTP Trigger on the automation, or pick a different automation.
 
 **Root Cause**: The run exceeded the profile's timeout, which Contentstack caps at 120000 ms.
 
-**Resolution**: Raise `timeout` on the [connector URL](/developers/mcp-url-parameters) up to 120000 ms, or look up the reported execution ID in Agent OS to see the result.
+**Resolution**: Raise `timeout` on the [connector URL](/developers/mcp-profile-hub-url-parameters) up to 120000 ms, or look up the reported execution ID in Agent OS to see the result.
 
 ## Limitations
 
 - Discovery covers up to 50 projects per organization.
 - Contentstack caches the discovered list for five minutes. A newly activated automation can take that long to appear.
 - Discovery stops after **eight seconds**. If it does not finish, the tab lists fewer entries than exist.
-- The profile's timeout caps an agent run at 120000 ms. The [connector URL](/developers/mcp-url-parameters) accepts a `timeout` value up to that maximum.
+- The profile's timeout caps an agent run at 120000 ms. The [connector URL](/developers/mcp-profile-hub-url-parameters) accepts a `timeout` value up to that maximum.
 - You can still add a secured automation to a profile, and it fails when the agent calls it. See [Troubleshooting](#troubleshooting).
 - An exported profile contains no automations or agents. See [Exports drop these tools](#exports-drop-these-tools).
 
 ## Next Steps
 
-- [Create a profile](/developers/mcp-create-a-profile): pick automations and agents in the tool browser's wizard step.
-- [Manage profiles](/developers/mcp-manage-profiles): see what an export leaves out and the steps to re-add tools after an import.
-- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): read the Executions view and the full error reference for automation and agent failures.
+- [Create a profile](/developers/mcp-profile-hub-create-a-profile): pick automations and agents in the tool browser's wizard step.
+- [Manage profiles](/developers/mcp-profile-hub-manage-profiles): see what an export leaves out and the steps to re-add tools after an import.
+- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): read the Executions view and the full error reference for automation and agent failures.

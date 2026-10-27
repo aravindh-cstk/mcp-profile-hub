@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-profiles-and-catalogs
+url: /developers/mcp-profile-hub-profiles-and-catalogs
 seo_title: Profiles and catalogs
 seo_description: MCP Profile Hub profiles bundle tools, configuration, and scope. Read about the system profiles Contentstack ships and the tool catalogs a profile draws from.
 ---
@@ -147,8 +147,8 @@ Contentstack derives the required OAuth scopes from your tool selection, so a wi
 
 ## Next Steps
 
-- [Create a profile](/developers/mcp-create-a-profile): build a custom profile from the tool catalog.
-- [Manage profiles](/developers/mcp-manage-profiles): duplicate, export, import, enable, and delete existing profiles.
-- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): install a profile into Claude, Cursor, Codex, or another MCP client.
-- [Automations and agents as tools](/developers/mcp-automations-and-agents): expose Automate automations and Agent OS agents as single tools.
-- [MCP URL parameters](/developers/mcp-url-parameters): override stack, branch, environment, and locale per connection.
+- [Create a profile](/developers/mcp-profile-hub-create-a-profile): build a custom profile from the tool catalog.
+- [Manage profiles](/developers/mcp-profile-hub-manage-profiles): duplicate, export, import, enable, and delete existing profiles.
+- [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): install a profile into Claude, Cursor, Codex, or another MCP client.
+- [Automations and agents as tools](/developers/mcp-profile-hub-automations-and-agents): expose Automate automations and Agent OS agents as single tools.
+- [MCP URL parameters](/developers/mcp-profile-hub-url-parameters): override stack, branch, environment, and locale per connection.

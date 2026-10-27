@@ -28,7 +28,7 @@ Contentstack provides four MCP products. Three let an AI client call Contentstac
 
 ## Contentstack MCP Profile Hub
 
-MCP Profile Hub hosts profiles that expose a scoped set of Contentstack tools over Streamable HTTP. Clients that support Streamable HTTP, including web clients, connect with no local installation. Clients that support only stdio need Node.js to run the `mcp-remote` bridge. You can share a profile with your team. Start with [What is MCP Profile Hub](/developers/mcp-what-is-profile-hub).
+MCP Profile Hub hosts profiles that expose a scoped set of Contentstack tools over Streamable HTTP. Clients that support Streamable HTTP, including web clients, connect with no local installation. Clients that support only stdio need Node.js to run the `mcp-remote` bridge. You can share a profile with your team. Start with [What is MCP Profile Hub](/developers/mcp-profile-hub-what-is-profile-hub).
 
 ## Contentstack MCP Server
 

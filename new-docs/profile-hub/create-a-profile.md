@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-create-a-profile
+url: /developers/mcp-profile-hub-create-a-profile
 seo_title: Create a profile
 seo_description: Build an MCP Profile Hub profile with the three-step wizard, tool selection, configuration, and installation, or start from a ready-made system profile.
 ---
@@ -18,11 +18,11 @@ Log in to Contentstack and open **MCP Profile Hub** from the **App Switcher**. T
 The app builds a profile through a three-step wizard: tool selection, configuration, and installation. You can start the wizard from the **Profiles** screen in two ways:
 
 - **Custom profile:** start from [Step 1: Select tools](#step-1-select-tools).
-- **System profile:** open a [ready-made profile](/developers/mcp-profiles-and-catalogs#system-profiles) from the **System profiles** section, complete **Configuration** by picking a stack, and continue to **Installation**. You do not select tools.
+- **System profile:** open a [ready-made profile](/developers/mcp-profile-hub-profiles-and-catalogs#system-profiles) from the **System profiles** section, complete **Configuration** by picking a stack, and continue to **Installation**. You do not select tools.
 
 ## Prerequisites
 
-Decide the one job this profile should support before you start. See [Keep a profile focused](/developers/mcp-profiles-and-catalogs#keep-a-profile-focused). You also need:
+Decide the one job this profile should support before you start. See [Keep a profile focused](/developers/mcp-profile-hub-profiles-and-catalogs#keep-a-profile-focused). You also need:
 
 - Access to the MCP Profile Hub Marketplace app in your Contentstack organization. See [Installing Apps](/marketplace/installing-apps), or ask a user whose product role permits installing Marketplace apps to install it.
 - At least one [Contentstack stack](/headless-cms/create-a-new-stack) for the profile to operate on.
@@ -38,7 +38,7 @@ This step covers naming the profile and choosing its tools. The name is the only
 5. Select the tools this profile should expose and click **Save selection**.
 6. Click **Save & Continue**.
 
-> **Tip:** If the profile you need already exists in another organization, import it instead of rebuilding it. [Export it as JSON](/developers/mcp-manage-profiles#export-a-profile) from that organization, then [import it here](/developers/mcp-manage-profiles#import-a-profile).
+> **Tip:** If the profile you need already exists in another organization, import it instead of rebuilding it. [Export it as JSON](/developers/mcp-profile-hub-manage-profiles#export-a-profile) from that organization, then [import it here](/developers/mcp-profile-hub-manage-profiles#import-a-profile).
 
 **Where the browser opens.**
 
@@ -53,7 +53,7 @@ Contentstack derives the required Open Authorization (OAuth) scopes from your se
 
 ![The Browse tools panel, showing catalogs on the left such as All tools, CMA, CDA, Analytics, BrandKit, Launch, DeveloperHub, and Personalize, the Read, Create, Update, Delete, Action, and Publishing filters, tools grouped under Entry Management with an operation tag on each, and the Add 5 tools button.](images/browse-tools-panel.png)
 
-> **Additional Resources:** For more information on what each catalog holds and where the tabs get their tools, refer to the [Profiles and catalogs](/developers/mcp-profiles-and-catalogs#catalogs) documentation. For more information on what qualifies an automation or an agent to appear, refer to the [Automations and agents as tools](/developers/mcp-automations-and-agents) documentation.
+> **Additional Resources:** For more information on what each catalog holds and where the tabs get their tools, refer to the [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs#catalogs) documentation. For more information on what qualifies an automation or an agent to appear, refer to the [Automations and agents as tools](/developers/mcp-profile-hub-automations-and-agents) documentation.
 
 ## Step 2: Configure
 
@@ -63,7 +63,7 @@ The wizard shows a connection only when your tool selection needs it, as the tab
 
 | Connection | Required | Appears when the profile includes |
 | --- | --- | --- |
-| Stack | Yes | [CMA, CMA Extended, or CDA](/developers/mcp-profiles-and-catalogs#catalogs) tools |
+| Stack | Yes | [CMA, CMA Extended, or CDA](/developers/mcp-profile-hub-profiles-and-catalogs#catalogs) tools |
 | Launch | No | Launch tools |
 | Personalize | No | Personalize tools |
 | Brand Kit | No | BrandKit tools |
@@ -97,7 +97,7 @@ Unlike the other connections, Lytics has no connector URL parameter. To change t
 
 ## Step 3: Install
 
-Contentstack now hosts the profile at its own endpoint. The **Installation** step shows a ready-to-paste snippet for each supported client, plus the raw connector URL. Copy the connector URL, or copy the generated config snippet for your client, then paste it into the client you use. For client-specific steps, follow the matching section in [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub).
+Contentstack now hosts the profile at its own endpoint. The **Installation** step shows a ready-to-paste snippet for each supported client, plus the raw connector URL. Copy the connector URL, or copy the generated config snippet for your client, then paste it into the client you use. For client-specific steps, follow the matching section in [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub).
 
 ![The Installation step for the CMS profile, showing the Claude Desktop, Claude Desktop Manual, Claude Code, Codex, Cursor, and Generic tabs, an Add to Claude button, and the raw connector URL with a Copy button.](images/installation-step.png)
 
@@ -109,7 +109,7 @@ https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=<PROFILE_ID>&branch=
 
 If you omit the `branch` parameter from the connector URL, the runtime runs operations against the stack's default branch. The runtime lists the stack's branches in the tool definitions, so the AI client can specify a different branch on each call.
 
-> **Additional Resource:** For more information on every parameter and the rules for combining them, refer to the [MCP URL parameters](/developers/mcp-url-parameters) documentation.
+> **Additional Resource:** For more information on every parameter and the rules for combining them, refer to the [MCP URL parameters](/developers/mcp-profile-hub-url-parameters) documentation.
 
 ## Edit a profile
 
@@ -131,7 +131,7 @@ Either the tool manifests fail to load, or a catalog key changes after you save 
 
 ## Next Steps
 
-- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): paste the connector URL into Claude, Cursor, or another supported client.
-- [MCP URL parameters](/developers/mcp-url-parameters): set branch, environment, and locale on the connector URL, since the wizard has no field for them.
-- [Manage profiles](/developers/mcp-manage-profiles): duplicate, export, import, and delete profiles.
-- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): confirm the profile's tool calls reach Contentstack.
+- [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): paste the connector URL into Claude, Cursor, or another supported client.
+- [MCP URL parameters](/developers/mcp-profile-hub-url-parameters): set branch, environment, and locale on the connector URL, since the wizard has no field for them.
+- [Manage profiles](/developers/mcp-profile-hub-manage-profiles): duplicate, export, import, and delete profiles.
+- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): confirm the profile's tool calls reach Contentstack.

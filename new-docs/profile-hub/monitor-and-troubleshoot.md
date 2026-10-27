@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-monitor-and-troubleshoot
+url: /developers/mcp-profile-hub-monitor-and-troubleshoot
 seo_title: Monitor and troubleshoot
 seo_description: Use the MCP Profile Hub Executions view to review tool calls, and diagnose connection, authentication, and execution failures from their error messages.
 ---
@@ -59,13 +59,13 @@ Every group under Troubleshooting sorts its entries by the symptom you see first
 **Resolution**
 
 1. Start sign-in again from your client, for example with `/mcp` in Claude Code, and complete the browser flow.
-2. If sign-in completed and the client still lists no tools, Contentstack [disabled the profile](/developers/mcp-manage-profiles#enable-and-disable-a-profile). The app provides no control for this setting, and you cannot change it yourself, so contact [Contentstack support](mailto:support@contentstack.com).
+2. If sign-in completed and the client still lists no tools, Contentstack [disabled the profile](/developers/mcp-profile-hub-manage-profiles#enable-and-disable-a-profile). The app provides no control for this setting, and you cannot change it yourself, so contact [Contentstack support](mailto:support@contentstack.com).
 
 #### No tools appear, and the connection reports an error
 
 **Root Cause**: A malformed project UID in the connector URL fails the whole tool listing, not only the affected product.
 
-**Resolution**: Correct the project UID in the [connector URL](/developers/mcp-url-parameters). The URL parameters reference gives the accepted format for each parameter.
+**Resolution**: Correct the project UID in the [connector URL](/developers/mcp-profile-hub-url-parameters). The URL parameters reference gives the accepted format for each parameter.
 
 #### The browser never opens for sign-in, and the URL looks wrong
 
@@ -86,7 +86,7 @@ Every group under Troubleshooting sorts its entries by the symptom you see first
 
 **Root Cause**: Contentstack raised the pinned `mcp-remote` version, and the new version stores credentials in a new, empty directory.
 
-**Resolution**: Sign in again. A [version change](/developers/mcp-connect-a-client-to-profile-hub#why-contentstack-pins-the-mcp-remote-version) triggers this prompt and does not indicate a fault.
+**Resolution**: Sign in again. A [version change](/developers/mcp-profile-hub-connect-a-client-to-profile-hub#why-contentstack-pins-the-mcp-remote-version) triggers this prompt and does not indicate a fault.
 
 #### Sign-in loops with no version change
 
@@ -120,7 +120,7 @@ In all three cases, a profile grants no more access than your Contentstack roles
 
 **Root Cause**: You have not completed OAuth for this profile, or the stored token expired.
 
-**Resolution**: Reconnect and [sign in again](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions). The error also includes an `authorization_url` you can open directly.
+**Resolution**: Reconnect and [sign in again](/developers/mcp-profile-hub-connect-a-client-to-profile-hub#authentication-and-permissions). The error also includes an `authorization_url` you can open directly.
 
 #### authorization_required, with reason insufficient_scope
 
@@ -144,13 +144,13 @@ scope to the curated list) and try again.
 
 **Root Cause**: Contentstack rejected the token, and the refresh also failed.
 
-**Resolution**: Reconnect and [sign in again](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions).
+**Resolution**: Reconnect and [sign in again](/developers/mcp-profile-hub-connect-a-client-to-profile-hub#authentication-and-permissions).
 
 #### Profile scope mismatch
 
 **Root Cause**: The client requested a profile other than the one the connector URL specifies.
 
-**Resolution**: Use the [connector URL](/developers/mcp-url-parameters#a-connector-url-is-scoped-to-one-profile) for the profile you want. The `profile_id` in the URL determines which profile the client can use.
+**Resolution**: Use the [connector URL](/developers/mcp-profile-hub-url-parameters#a-connector-url-is-scoped-to-one-profile) for the profile you want. The `profile_id` in the URL determines which profile the client can use.
 
 ### Configuration errors
 
@@ -170,7 +170,7 @@ scope to the curated list) and try again.
 
 **Root Cause**: The project UID is not 1 to 64 characters of letters, digits, hyphens, or underscores.
 
-**Resolution**: Correct the [parameter](/developers/mcp-url-parameters#validation) in the connector URL so that it matches that format.
+**Resolution**: Correct the [parameter](/developers/mcp-profile-hub-url-parameters#validation) in the connector URL so that it matches that format.
 
 #### Cannot find that stack
 
@@ -182,13 +182,13 @@ scope to the curated list) and try again.
 **Resolution**
 
 1. Confirm the configured stack API key is correct for your account.
-2. Confirm you signed in to the organization that owns the stack. Contentstack derives the regional endpoints from the organization you signed in with, so Contentstack cannot reach a stack in another region during that session. The [region codes](/developers/contentstack-mcp-server#supported-regions) name each region, and the `cma_host` [sign-in parameter](/developers/mcp-url-parameters#sign-in-parameters) sets the region the connector URL uses.
+2. Confirm you signed in to the organization that owns the stack. Contentstack derives the regional endpoints from the organization you signed in with, so Contentstack cannot reach a stack in another region during that session. The [region codes](/developers/contentstack-mcp-server#supported-regions) name each region, and the `cma_host` [sign-in parameter](/developers/mcp-profile-hub-url-parameters#sign-in-parameters) sets the region the connector URL uses.
 
 #### This organization's plan does not include `<CATALOGS>`.
 
 **Root Cause**: The profile contains tools from a catalog your plan excludes.
 
-**Resolution**: Remove the tools that belong to the excluded [catalog](/developers/mcp-profiles-and-catalogs#plan-gated-catalogs) and save again.
+**Resolution**: Remove the tools that belong to the excluded [catalog](/developers/mcp-profile-hub-profiles-and-catalogs#plan-gated-catalogs) and save again.
 
 ### Automation and agent errors
 
@@ -210,7 +210,7 @@ The error message contains `is not activated in Contentstack Automate, so it did
 
 **Root Cause**: You left the automation as a draft, or you paused it.
 
-**Resolution**: Open the automation in Automate and activate it. See [What qualifies](/developers/mcp-automations-and-agents#what-qualifies) for the conditions a tool must meet.
+**Resolution**: Open the automation in Automate and activate it. See [What qualifies](/developers/mcp-profile-hub-automations-and-agents#what-qualifies) for the conditions a tool must meet.
 
 #### An automation call times out
 
@@ -303,7 +303,7 @@ The Executions view has the following limitations:
 
 ## Next Steps
 
-- [Manage profiles](/developers/mcp-manage-profiles): enable or disable a profile, and what an export leaves out.
-- [MCP URL parameters](/developers/mcp-url-parameters): the connector URL parameters and their validation rules.
-- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): which catalogs your plan includes.
-- [Automations and agents as tools](/developers/mcp-automations-and-agents): the trigger requirements an automation or agent must meet.
+- [Manage profiles](/developers/mcp-profile-hub-manage-profiles): enable or disable a profile, and what an export leaves out.
+- [MCP URL parameters](/developers/mcp-profile-hub-url-parameters): the connector URL parameters and their validation rules.
+- [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs): which catalogs your plan includes.
+- [Automations and agents as tools](/developers/mcp-profile-hub-automations-and-agents): the trigger requirements an automation or agent must meet.

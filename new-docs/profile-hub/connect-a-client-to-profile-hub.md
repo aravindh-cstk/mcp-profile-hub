@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-connect-a-client-to-profile-hub
+url: /developers/mcp-profile-hub-connect-a-client-to-profile-hub
 seo_title: Connect a client to MCP Profile Hub
 seo_description: Connect Claude, Claude Code, Cursor, Codex, ChatGPT, or another MCP client that supports Streamable HTTP to an MCP Profile Hub profile over HTTP, with OAuth sign-in in the browser.
 ---
@@ -33,7 +33,7 @@ The profile's **Installation** step shows six tabs. Each one generates a snippet
 
 ## Prerequisites
 
-- A published profile and its connector URL. An unpublished profile returns no tools to the client even though the connection succeeds. See [Create a profile](/developers/mcp-create-a-profile).
+- A published profile and its connector URL. An unpublished profile returns no tools to the client even though the connection succeeds. See [Create a profile](/developers/mcp-profile-hub-create-a-profile).
 - An MCP-compatible client. See [Pick an installation tab](#pick-an-installation-tab) for the six clients with generated snippets, or another client that supports Streamable HTTP.
 - For the **Claude Desktop Manual** path or any other stdio-only client, install [Node.js](https://nodejs.org) to run the [`mcp-remote`](https://www.npmjs.com/package/mcp-remote) bridge. Without Node.js, the `npx` command fails and the server never starts.
 - A Contentstack account whose roles already allow the operations the profile exposes. You can connect without those roles, but a tool call fails at run time if your role does not permit it, because a profile never grants access beyond your existing roles. See [About Product Roles](/administration/about-product-roles) for product-level access, and [About Stack Roles](/headless-cms/about-stack-roles) for content tools.
@@ -190,7 +190,7 @@ The table below answers common questions about sign-in and permissions:
 | Question | Answer |
 | --- | --- |
 | Do I need to create an API key? | No. Sign-in is OAuth, through the browser |
-| Is the connector URL sensitive? | Not by default. The `profile_id` names a profile and is not a secret. A URL that includes the [`apikey` parameter](/developers/mcp-url-parameters) also contains your stack API key |
+| Is the connector URL sensitive? | Not by default. The `profile_id` names a profile and is not a secret. A URL that includes the [`apikey` parameter](/developers/mcp-profile-hub-url-parameters) also contains your stack API key |
 | Can a shared profile give someone extra access? | No. Each person connects with their own sign-in and their own roles |
 
 ## Why Contentstack pins the mcp-remote version
@@ -227,11 +227,11 @@ When Contentstack updates the pinned version, the new version also reads an empt
 
 **Resolution**: Restart Claude Desktop.
 
-> **Additional Resource:** For more information on failures this list does not cover, refer to the [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot) documentation. Start with the **Executions** view in the app, which shows the error message and request metadata for most failures.
+> **Additional Resource:** For more information on failures this list does not cover, refer to the [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot) documentation. Start with the **Executions** view in the app, which shows the error message and request metadata for most failures.
 
 ## Next Steps
 
-- [MCP URL parameters](/developers/mcp-url-parameters): configure a stack, branch, or project from the connector URL.
-- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): what a profile exposes.
+- [MCP URL parameters](/developers/mcp-profile-hub-url-parameters): configure a stack, branch, or project from the connector URL.
+- [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs): what a profile exposes.
 - [Authentication and permissions](#authentication-and-permissions): the OAuth sign-in flow, and why a profile can never grant more access than your roles allow.
 - [Contentstack MCP Server](/developers/contentstack-mcp-server): the locally installed alternative, which exposes the full toolset on one machine instead of a scoped hosted profile.

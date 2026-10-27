@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /developers/mcp-manage-profiles
+url: /developers/mcp-profile-hub-manage-profiles
 seo_title: Manage profiles
 seo_description: Duplicate, export, and import MCP Profile Hub profiles as JSON, edit an existing profile, and understand what carries over in each case.
 ---
@@ -13,7 +13,7 @@ Duplicate a profile to copy it within the same organization, or export it as JSO
 
 ## Prerequisites
 
-- An existing profile to duplicate, export, edit, or delete. See [Create a profile](/developers/mcp-create-a-profile).
+- An existing profile to duplicate, export, edit, or delete. See [Create a profile](/developers/mcp-profile-hub-create-a-profile).
 - A product role that permits you to create and delete profiles. See [About Product Roles](/administration/about-product-roles).
 
 ## Where the controls are
@@ -137,7 +137,7 @@ A profile has an `enabled` flag. When Contentstack disables a profile, the chang
 
 ## Delete a profile
 
-**Warning:** When you delete a profile, every client that uses its URL loses access immediately, including the clients of other users. Check the [Executions](/developers/mcp-monitor-and-troubleshoot) view for recent activity before you delete a shared profile.
+**Warning:** When you delete a profile, every client that uses its URL loses access immediately, including the clients of other users. Check the [Executions](/developers/mcp-profile-hub-monitor-and-troubleshoot) view for recent activity before you delete a shared profile.
 
 To delete a profile, follow the two steps below:
 
@@ -265,12 +265,12 @@ Organization profile limit of 500 reached; ask an administrator to remove unused
 This organization's plan does not include launch. Remove the tools from that catalog and save again.
 ```
 
-**Root Cause**: The file contains tools your plan excludes. See [Profiles and catalogs](/developers/mcp-profiles-and-catalogs#plan-gated-catalogs).
+**Root Cause**: The file contains tools your plan excludes. See [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs#plan-gated-catalogs).
 
 **Resolution**: Remove those tools, or import into an organization on a plan that includes them.
 
 ## Next Steps
 
-- [Connect a client to Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): the install snippet for each client, useful after you duplicate or import a profile.
-- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): the Executions view and the full error reference.
-- [Automations and agents as tools](/developers/mcp-automations-and-agents): the steps to re-add the automation tools an export drops.
+- [Connect a client to Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): the install snippet for each client, useful after you duplicate or import a profile.
+- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): the Executions view and the full error reference.
+- [Automations and agents as tools](/developers/mcp-profile-hub-automations-and-agents): the steps to re-add the automation tools an export drops.
