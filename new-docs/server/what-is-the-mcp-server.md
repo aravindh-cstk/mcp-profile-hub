@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/what-is-the-mcp-server
+url: /developers/mcp-what-is-the-mcp-server
 seo_title: What is the Contentstack MCP Server?
 seo_description: ""
 ---

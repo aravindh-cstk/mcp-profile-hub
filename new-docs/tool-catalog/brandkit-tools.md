@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/brandkit-tools
+url: /developers/mcp-brandkit-tools
 seo_title: Brand Kit tools
 seo_description: ""
 ---

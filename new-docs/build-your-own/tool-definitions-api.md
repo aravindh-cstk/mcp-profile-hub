@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/tool-definitions-api
+url: /developers/mcp-tool-definitions-api
 seo_title: Tool Definitions API
 seo_description: ""
 ---

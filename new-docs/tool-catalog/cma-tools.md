@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/cma-tools
+url: /developers/mcp-cma-tools
 seo_title: Content Management API (CMA) tools
 seo_description: ""
 ---

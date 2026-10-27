@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/connect-a-client-to-the-mcp-server
+url: /developers/mcp-connect-a-client-to-the-mcp-server
 seo_title: Connect a client to the MCP Server
 seo_description: ""
 ---

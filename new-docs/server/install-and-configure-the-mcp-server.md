@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/install-and-configure-the-mcp-server
+url: /developers/mcp-install-and-configure-the-mcp-server
 seo_title: Install and configure the MCP Server
 seo_description: ""
 ---

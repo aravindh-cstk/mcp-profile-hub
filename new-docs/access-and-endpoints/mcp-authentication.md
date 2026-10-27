@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/mcp-authentication
+url: /developers/mcp-authentication
 seo_title: MCP authentication
 seo_description: ""
 ---

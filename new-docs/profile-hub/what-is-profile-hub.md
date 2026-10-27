@@ -1,76 +1,130 @@
 ---
 uid: ""
-url: /docs/mcp/what-is-profile-hub
+url: /developers/mcp-what-is-profile-hub
 seo_title: What is MCP Profile Hub?
 seo_description: MCP Profile Hub is a hosted Contentstack app that exposes scoped sets of Contentstack tools as profiles you connect to AI clients over HTTP.
 ---
 
 # What is MCP Profile Hub?
 
-MCP Profile Hub is a Contentstack Marketplace app that lets you create profiles: small, tightly scoped [MCP](/docs/mcp/mcp-at-contentstack) integrations that expose only the Contentstack tools a specific job needs. You publish a profile once, then connect it to any MCP-compatible client.
+## Overview
 
-## What it is
+MCP Profile Hub is a Contentstack Marketplace app in which you create profiles: scoped [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) integrations that expose only the Contentstack tools you select. After you publish a profile, you connect it to MCP clients that support Streamable HTTP, or to stdio clients through the `mcp-remote` bridge.
 
-Exposing every Contentstack tool to an AI client works poorly. With more than 100 tools, models struggle to pick the right one, context windows grow large, and smaller models fail on common workflows. A profile exposes a selected toolset instead, shaped to your stack and bounded by your existing Contentstack roles.
+## What a profile exposes
 
-Once a profile is connected, your AI agent can, for example:
+A profile exposes a subset of Contentstack tools that you select. The tool definitions include the content types, branches, environments, and locales in your stack, and your Contentstack role limits the operations the tools can run.
+
+Because a large toolset lowers a model's accuracy in selecting the correct tool, a profile exposes only the tools you select. A large toolset also uses more of the context window and can cause smaller models to fail on common workflows.
+
+After you connect a profile, your AI agent can run tasks such as the examples below:
 
 - Look up entries, assets, and publish status in plain language.
-- Publish or update content in approved environments.
+- Publish or update content in the environments your role permits.
 - Inspect content models and generate implementation guidance.
-- Run approved operational tasks without opening the CMS.
+- Run your own Contentstack Automate automations and Agent OS agents as single tool calls.
 
-Every profile is:
+## Profile properties
 
-- **Scoped:** the model sees only the tools the profile exposes, never the whole platform.
-- **Contextual:** tools reflect your real content models, locales, branches, and environments.
-- **Governed:** you sign in with OAuth, operations run with your existing roles, and every action is logged. See [MCP authentication](/docs/mcp/mcp-authentication).
+Every profile has the three properties below:
 
-This app serves:
+- **Scoped:** the client receives only the tools that the profile exposes.
+- **Contextual:** tool definitions include the content types, locales, branches, and environments in your stack.
+- **Governed:** you sign in with Open Authorization (OAuth), each operation runs with your existing Contentstack roles, and the app records each tool call in the **Executions** view.
 
-- Content editors who want to look things up or run approved operations without opening the CMS.
-- Developers who want Contentstack helpers in an IDE or terminal.
+> **Additional Resource:** For more information on the OAuth sign-in, the scopes you approve, and how Contentstack applies your roles to each tool call, refer to the [Authentication and permissions](/developers/mcp-connect-a-client-to-profile-hub#authentication-and-permissions) documentation.
+
+## Who uses MCP Profile Hub
+
+This app serves the four groups below:
+
+- Content editors who retrieve entries or run the operations their role permits without opening the CMS.
+- Developers who call Contentstack tools from an IDE or terminal.
 - Operations teams that run repeatable content and campaign workflows.
-- Admins who expose narrow capabilities to non-technical users.
+- Admins who build profiles with a limited set of tools for non-technical users.
 
-## How it works
+## Profile Hub compared with the MCP Server
 
-MCP Profile Hub has three parts:
-
-1. **Profiles:** the scoped tool bundles you create and publish in the app. See [Profiles and catalogs](/docs/mcp/profiles-and-catalogs).
-2. **The hosted runtime** at `mcp-hub.contentstack.com`: it loads the profile, authenticates you, applies stack context, checks permissions, and runs operations.
-3. **MCP clients:** any MCP-compatible app (Claude, ChatGPT, Cursor, VS Code, Claude Code, Codex, and others) that connects to a profile endpoint.
-
-The lifecycle:
-
-1. Create a profile in the app: pick tools, configure a stack, and publish. You get a profile URL. See [Create a profile](/docs/mcp/create-a-profile).
-2. Add the profile URL to your MCP client. The client opens a browser for Contentstack OAuth. You sign in and approve the requested scopes. See [Connect a client to MCP Profile Hub](/docs/mcp/connect-a-client-to-profile-hub).
-3. When the client calls a tool, the runtime validates your token, resolves the target stack, applies context, checks your permissions, runs the operation, and logs the result.
-
-Every published profile has a stable endpoint:
-
-```
-https://mcp-hub.contentstack.com/api/mcp?profile_id=<profile_id>
-```
-
-The `profile_id` is a catalog identifier, not a secret. Identity comes entirely from OAuth, so the URL is safe to share.
-
-## Profile Hub or the Server?
-
-Both MCP Profile Hub and the [Contentstack MCP Server](/docs/mcp/what-is-the-mcp-server) connect AI agents to Contentstack and cover the same kinds of work. They differ in how you install them and how many tools your agent ends up with.
+Both MCP Profile Hub and the [Contentstack MCP Server](/developers/contentstack-mcp-server) connect AI agents to Contentstack and cover similar tasks. They differ in their installation method and in the number of tools they expose to your agent. The table below compares them.
 
 | | Contentstack MCP Server | MCP Profile Hub |
 | --- | --- | --- |
-| Installation | Runs locally via `npx`, configured per machine with credentials or an OAuth session | Hosted at `mcp-hub.contentstack.com`. Nothing to install. Add a URL to your client |
+| Installation | Runs locally through `npx`. You configure it per machine with a [management or delivery token](/headless-cms/types-of-tokens) or an OAuth session | Contentstack hosts it at `mcp-profile-hub.contentstack.com`. You add the connector URL to your client. Clients that support Streamable HTTP need no local installation, and stdio-only clients need Node.js to run the `mcp-remote` bridge |
 | Transport | stdio, so it works only in clients that can run a local process | Streamable HTTP, so it also works in web clients such as claude.ai and ChatGPT |
-| Tool selection | Tool groups (`cma`, `launch`, and so on). Each group loads its full toolset | Selected per profile. You expose exactly the tools a job needs |
+| Tool selection | Tool groups, for example `cma` and `launch`. Each group loads its full toolset | You select tools per profile. Each profile exposes only the tools you select |
 
-The MCP Server gives a developer the full toolset on their own machine. MCP Profile Hub gives anyone a scoped toolset from any client, shareable across a team.
+The MCP Server gives a developer the full toolset on their own machine. MCP Profile Hub provides a scoped, hosted toolset that a team can share across MCP clients.
 
-## Audit logging
+## Setup and architecture
 
-MCP Profile Hub logs all profile activity. Each log entry records the user, profile, client, tool, timestamp, input payload, execution result, and permission outcome. Audit history is scoped per organization and per user, so each user sees their own activity.
+An MCP Profile Hub setup has three components:
 
-The app includes an **Executions** view: a searchable, filterable history of tool calls across your profiles. Each entry shows the status (running, completed, or failed), the profile and tool involved, timing, any error message, and expandable request metadata. Use it to confirm calls are succeeding, diagnose a failed call, or review how a shared profile is used across the team.
+- **Profiles:** a profile is a set of Contentstack tools you pick in the app. After you publish it, an AI client can connect to it.
+- **The hosted runtime** at `mcp-profile-hub.contentstack.com`: it loads the profile, authenticates you, applies stack context, checks permissions, and runs operations.
+- **MCP clients:** an MCP-compatible app, for example Claude, Claude Code, Cursor, Codex, or ChatGPT, that connects to a profile's connector URL.
 
-TODO(screenshot): Executions view. It should show a filterable list of tool calls with status badges, profile and tool names, timestamps, and one expanded row with request metadata or an error message.
+You set this up in two steps:
+
+1. Create a profile in the app: pick tools, configure a stack, and publish. You get a connector URL.
+2. Add the connector URL to your MCP client. The client opens a browser for Contentstack OAuth. You sign in and approve the requested scopes.
+
+**The connector URL of a published profile does not change when you edit the profile.**
+
+The Installation screen pre-fills the `profile_id` and `org_uid` values in the URL below, which you copy:
+
+```
+https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=<PROFILE_ID>&org_uid=<ORG_UID>
+```
+
+**The default connector URL contains no secrets.**
+
+Neither value in the URL above is a secret, because Contentstack identifies you through OAuth sign-in, not through a value in the URL. The `profile_id` identifies the profile that the connection uses. Contentstack uses the `org_uid` during sign-in to identify your organization without a separate lookup, and the value has no effect on a tool call. A URL that includes the `apikey` parameter also contains your stack API key.
+
+**Query parameters override the profile's saved configuration.**
+
+You can set the stack, branch, or project of a shared system profile through query parameters in the connector URL, without changing the saved profile in the app.
+
+> **Additional Resource:** For more information on the query-string parameters that set the stack, branch, environment, and project for a single connection, and the order in which Contentstack applies them, refer to the [MCP URL parameters](/developers/mcp-url-parameters) documentation.
+
+### How a tool call works
+
+When your client calls a tool, the runtime handles it in the order below:
+
+```
+MCP client --tool call--> Runtime
+Runtime:
+  1. Validate token
+  2. Resolve stack
+  3. Apply context (branch, environment, locale)
+  4. Check role permissions
+  5. Execute against Contentstack
+  6. Log to Executions
+Runtime --result--> MCP client
+```
+
+### Stack-aware tool definitions
+
+When a client calls `tools/list`, the runtime reads your Contentstack setup and adds the values from your stack to each tool definition in the profile.
+
+An injected list limits the values the model sends. When a tool's `branch` parameter lists the existing branches as an `enum`, the model selects a value from that list. When the parameter has no `enum`, the tool call sends the model's value without validation.
+
+Two caps apply to the injected values: an injected list stops at 50 entries, and tool definitions cache for five minutes. [Limitations](#limitations) states both in full.
+
+## Execution logging
+
+MCP Profile Hub records the tool calls that each profile runs. Each entry captures the profile, the tool, the calling client, timing, the input payload, and the result. The app's **Executions** view is a searchable history of those calls, and you use it to diagnose a failed call from its error message.
+
+![The Executions view, showing a search box, status and profile filters, and execution cards for completed, running, and failed tool calls with their profile, tool name, status, and error message.](images/executions-view.png)
+
+## Limitations
+
+- **Injected lists cap at 50 values.** A tool definition lists at most 50 content types, branches, environments, or locales. If your stack has more, the model can select only from the first 50 values in that list.
+- **Tool definitions cache for five minutes.** A change you make in Contentstack, such as a new branch, appears in the tool definitions only after the cached definitions expire.
+- **Executions identifies the client, not the person.** For user-level attribution, use the organization [audit log](/headless-cms/monitor-stack-activities-in-audit-log).
+
+## Next Steps
+
+- [Create a profile](/developers/mcp-create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
+- [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
+- [Profiles and catalogs](/developers/mcp-profiles-and-catalogs): the catalogs that group the tools a profile can expose.
+- [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.

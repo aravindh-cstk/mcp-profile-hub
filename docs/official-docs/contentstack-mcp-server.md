@@ -1,6 +1,6 @@
 ---
 uid: "bltc2205acbb762b7a2"
-url: "/agent-os/contentstack-mcp-server"
+url: "/developers/contentstack-mcp-server"
 seo_title: "Contentstack MCP server | Contentstack"
 seo_description: "Leverage the Contentstack MCP Server for smarter workflows using natural language commands across APIs and tools like Lytics and Claude.
 "
@@ -383,7 +383,7 @@ Use this group for:
 *   Bulk publishing or unpublishing workflows
 *   Branch management and merge operations
 
-78 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#content-management-api-cma) for the full list.
+78 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#content-management-api-cma) for the full list.
 
 ### CMA Extended - Content Management API Extended
 
@@ -401,7 +401,7 @@ Extends CMA with administrative and investigative capabilities. Load alongside c
 *   **Asset folder management:** create, rename, and delete asset folders.
 *   **Workflow inspection:** retrieve workflow definitions and publish rules.
 
-22 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#content-management-api-extended-cma-extended) for the full list.
+22 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#content-management-api-extended-cma-extended) for the full list.
 
 ### CDA: Content Delivery API
 
@@ -415,7 +415,7 @@ Delivers published content through Contentstack's global CDN. Read-only. Returns
 
 Does not require OAuth. Authenticate by providing a delivery token scoped to your target environment.
 
-4 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#content-delivery-api-cda) for the full list.
+4 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#content-delivery-api-cda) for the full list.
 
 ### Analytics
 
@@ -429,7 +429,7 @@ Usage analytics for your Contentstack organisation: API call volumes, CDN bandwi
 
 All analytics tools are asynchronous — they return a jobId which you then pass to get\_job\_data to retrieve the results once the job completes.
 
-8 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#analytics-api) for the full list.
+8 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#analytics-api) for the full list.
 
 ### Automations
 
@@ -443,7 +443,7 @@ Agent OS management and deterministic workflow execution. Manage Agent OS projec
 
 Use \`list\_automations\` or \`get\_automation\` with \`show\_steps: true\` to identify HTTP-triggered workflows. Those automations expose a trigger \`id\`; pass that value to \`trigger\_automation\` with an optional JSON payload to run the workflow through MCP. This lets an agent choose when to run a workflow while Automation Hub controls exactly how the work is performed.
 
-See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#automations-api) for the full list.
+See the [Tool Catalog](/docs/developers/contentstack-mcp-server#automations-api) for the full list.
 
 ### BrandKit
 
@@ -459,7 +459,7 @@ AI-powered content generation grounded in your brand. BrandKit provides:
 *   **Knowledge Vault:** a store of brand guidelines, reference materials, and tone-of-voice examples.
 *   **Generative AI:** combines your voice profile and knowledge vault context to produce on-brand content.
 
-12 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#brandkit-ai) for the full list.
+12 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#brandkit-ai) for the full list.
 
 ### Launch
 
@@ -475,7 +475,7 @@ Full control over Launch, Contentstack's hosting and deployment platform. Manage
 
 Supports both Git-connected projects (GitHub, Bitbucket) and file-upload projects.
 
-See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#launch-api) for the full list.
+See the [Tool Catalog](/docs/developers/contentstack-mcp-server#launch-api) for the full list.
 
 ### Developer Hub
 
@@ -493,7 +493,7 @@ Use this group when building or managing custom integrations, UI extensions, web
 
 When enrichment is enabled, tool descriptions display your organization's Marketplace apps, and app\_uid parameters are populated with enums from GET/apps.
 
-See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#developer-hub) for the full list.
+See the [Tool Catalog](/docs/developers/contentstack-mcp-server#developer-hub) for the full list.
 
 ### Lytics
 
@@ -507,7 +507,7 @@ Access your Lytics customer data platform. Retrieve audience segments, look up i
 
 Does not require OAuth. Authenticate with a Lytics access token.
 
-10 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#lytics-analytics) for the full list.
+10 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#lytics-analytics) for the full list.
 
 ### Personalize
 
@@ -521,7 +521,7 @@ OAuth
 
 Configure and inspect Contentstack Personalize: manage custom attributes and audience segments, create and manage personalization experiences (both Segmented and A/B Test types), define events for conversion tracking, retrieve analytics summaries and time-series data for experience versions, and look up geolocation data for geographic targeting rules.
 
-24 tools. See the [Tool Catalog](/docs/agent-os/contentstack-mcp-server#personalize-api) for the full list.
+24 tools. See the [Tool Catalog](/docs/developers/contentstack-mcp-server#personalize-api) for the full list.
 
 ### Group Requirements Summary
 

@@ -25,7 +25,7 @@ You configure one MCP Client connection and your agent gains access to all of it
 
 ### How this differs from the Contentstack MCP Server
 
-It is easy to confuse this with the Contentstack MCP Server. For more information, refer to the [Contentstack MCP Server](https://www.contentstack.com/docs/agent-os/contentstack-mcp-server) documentation. They use the same protocol but in opposite directions:
+It is easy to confuse this with the Contentstack MCP Server. For more information, refer to the [Contentstack MCP Server](https://www.contentstack.com/docs/developers/contentstack-mcp-server) documentation. They use the same protocol but in opposite directions:
 
 *   **Contentstack MCP Server** lets _external_ AI tools (Claude Desktop, Cursor, etc.) connect into Contentstack and control it, such as creating entries, managing assets, and so on.
 *   **MCP Client** lets an agent _inside_ Agent OS reach out to control other external services, such as Jira, Notion, Slack, or any other MCP-compatible provider.
@@ -256,4 +256,4 @@ First, register an OAuth app with your provider:
     
 9.  **Is my data sent anywhere unexpected?**
     
-    No. Your agent connects directly to the [MCP server](https://www.contentstack.com/docs/agent-os/contentstack-mcp-server) you configured. Credentials stay encrypted and are used only to authenticate that connection.
+    No. Your agent connects directly to the [MCP server](https://www.contentstack.com/docs/developers/contentstack-mcp-server) you configured. Credentials stay encrypted and are used only to authenticate that connection.

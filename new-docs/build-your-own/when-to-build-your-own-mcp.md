@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/when-to-build-your-own-mcp
+url: /developers/mcp-when-to-build-your-own-mcp
 seo_title: When to build your own MCP
 seo_description: ""
 ---

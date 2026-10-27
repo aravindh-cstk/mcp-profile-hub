@@ -1,6 +1,6 @@
 ---
 uid: ""
-url: /docs/mcp/developerhub-tools
+url: /developers/mcp-developerhub-tools
 seo_title: Developer Hub tools
 seo_description: ""
 ---
