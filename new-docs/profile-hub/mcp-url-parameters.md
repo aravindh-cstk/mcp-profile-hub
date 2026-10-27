@@ -9,37 +9,35 @@ seo_description: Configure an MCP Profile Hub profile from its connector URL, in
 
 ## Overview
 
-An AI client stores one connector URL and posts to it for every call, so the query string on that URL acts as per-connection configuration.
+Configure a profile for each connector connection by adding query parameters to its URL. With these parameters, you set the stack, branch, or project that a shared system profile uses, without opening the app or saving configuration changes.
 
-This lets you point a shared system profile at your own stack, branch, or project without opening the app and saving anything:
+System profiles do not require the app (see [Skip the app](#skip-the-app)). For example, the following URL configures the `cms` system profile to use a specific stack and branch:
 
 ```
 https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=cms&apikey=<STACK_API_KEY>&branch=release-2
 ```
 
-Two people can connect to the same system profile and work against different stacks, each using their own URL.
+Each AI client sends the query parameters in its configured connector URL with every request. Multiple users can therefore connect to the same system profile and work with different stacks, branches, or projects through their own URLs.
+
+When more than one place sets the same value, Contentstack resolves it in a defined [precedence order](#precedence).
 
 ## Configuration parameters
 
-Every parameter is optional. When you omit one, Contentstack uses the profile's saved configuration.
+Every parameter is optional. When you omit one, Contentstack uses the profile's saved configuration. Content Management API (CMA) and Content Delivery API (CDA) are two of the [catalogs](/developers/mcp-profiles-and-catalogs#catalogs) a profile can include. The table below lists every configuration parameter.
 
-Content Management API (CMA) and Content Delivery API (CDA) are two of the catalogs a profile can include. See [Profiles and catalogs](/developers/mcp-profiles-and-catalogs#catalogs).
+| Parameter | Aliases | Sets | Constraint | If invalid |
+| --- | --- | --- | --- | --- |
+| `stack_api_key` | `apikey`, `api_key`, `stack_uid` | The stack that CMA, CMA Extended, and CDA tools run against | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
+| `launch_project_uid` | `project_uid` | The Launch project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
+| `personalize_project_uid` | | The Personalize project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
+| `brandkit_project_uid` | `brandkit_id` | The Brand Kit | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
+| `automation_project_uid` | | The Automate project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
+| `branch` | | The branch CMA and CDA calls run against | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
+| `environment` | | The default environment Contentstack offers the agent | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
+| `locale` | | The default locale Contentstack offers the agent | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
+| `timeout` | | The per-call timeout in milliseconds. Defaults to 60000 ms | Must be a positive number. Contentstack caps a larger value at 120000 ms and accepts the call | Dropped, Contentstack uses the profile's saved value |
 
-| Parameter | Required | Aliases | Sets | Constraint | If invalid |
-| --- | --- | --- | --- | --- | --- |
-| `stack_api_key` | No | `apikey`, `api_key`, `stack_uid` | The stack that CMA, CMA Extended, and CDA tools run against | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
-| `launch_project_uid` | No | `project_uid` | The Launch project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
-| `personalize_project_uid` | No | | The Personalize project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
-| `brandkit_project_uid` | No | `brandkit_id` | The Brand Kit | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
-| `automation_project_uid` | No | | The Automate project | 1-64 characters: letters, digits, hyphens, or underscores | Fails the whole connection |
-| `branch` | No | | The branch CMA and CDA calls run against | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
-| `environment` | No | | The default environment Contentstack offers the agent | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
-| `locale` | No | | The default locale Contentstack offers the agent | Trimmed and capped at 256 characters | Dropped, Contentstack uses the profile's saved value |
-| `timeout` | No | | The per-call timeout in milliseconds. Defaults to 60000 ms | Must be a positive number. Contentstack silently caps a larger value at 120000 ms rather than rejecting it | Dropped, Contentstack uses the profile's saved value |
-
-When a parameter has aliases, Contentstack reads them in the order this table lists and uses the first one present.
-
-For example, this URL sets a stack, a branch, an environment, a locale, and a timeout in one connector URL:
+When a parameter has aliases, Contentstack reads them in the order the table above lists and uses the first one present. For example, the URL below sets a stack, a branch, an environment, a locale, and a timeout in one connector URL:
 
 ```
 https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=cms&apikey=<STACK_API_KEY>&branch=release-2&environment=production&locale=en-us&timeout=60000
@@ -47,75 +45,81 @@ https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=cms&apikey=<STACK_AP
 
 ## Precedence
 
-Several places can set the same value. The highest one wins:
+The following places can set the same value. The list below runs from highest precedence to lowest, and Contentstack uses the first entry that sets the value:
 
 1. **Tool arguments on a single call.** An agent can pass `stack_api_key` on one tool call.
 2. **The connector URL query string.**
 3. **Your saved selection for a system profile.**
 4. **The profile's stored configuration.**
 
-Setting a parameter in the URL overrides the saved profile for that connection only. It does not change the profile, and anyone else who connects to the same profile with their own URL is unaffected.
+A parameter you set in the URL overrides the saved profile for that connection only. It does not change the profile, and anyone else who connects to the same profile with their own URL is unaffected.
 
 ## Validation
 
-The two kinds of parameter fail differently, so check the right one when a connection misbehaves. The Constraint and If invalid columns in the parameter table above give the specifics for each parameter.
+Contentstack handles an invalid parameter in one of the two ways below. For a single parameter, read the Constraint and If invalid columns of the [configuration parameter table](#configuration-parameters).
 
-**Project UIDs fail loudly.** A malformed `launch_project_uid`, `personalize_project_uid`, `brandkit_project_uid`, or `automation_project_uid` fails the whole connection:
+**An invalid project UID fails the connection.** 
+
+A malformed `launch_project_uid`, `personalize_project_uid`, `brandkit_project_uid`, or `automation_project_uid` fails the whole connection with the message below:
 
 ```
 Invalid "launch_project_uid" in the MCP endpoint URL: expected 1-64 characters
 of letters, digits, hyphen or underscore
 ```
 
-Your client then lists no tools at all, not only the affected product. Contentstack fails rather than falling back to the saved project, because running against a different project than the URL named would be worse than not running.
+Your client then lists no tools, not only the tools of the affected product. Contentstack does not use the saved project in this case, so no call runs against a project that the URL does not specify.
 
-**Everything else fails quietly.** Contentstack drops a bad `stack_api_key`, `branch`, `environment`, `locale`, or `timeout` value and uses the profile's saved value instead.
+**Other invalid parameters return no error.** 
 
-Contentstack ignores any parameter this page does not list.
+Contentstack discards an invalid `stack_api_key`, `branch`, `environment`, `locale`, or `timeout` value and uses the profile's saved value instead. Contentstack also discards any parameter that the Configuration parameters and Sign-in parameters tables do not list.
 
-**Lytics has no parameter.** You cannot point a shared Lytics profile at a different Lytics account from the URL. Contentstack accepts a parameter only when something consumes it, and no Lytics tool takes a project argument or header, so a `lytics_project_uid` in the URL would look like configuration and do nothing. Change the profile's configuration in the app instead.
+**Lytics has no parameter.** 
 
-## Use a system profile without saving a configuration
+No Lytics tool accepts a project argument or header, so the connector URL has no Lytics parameter. To use a different Lytics account with a shared Lytics profile, edit the profile's configuration in the app.
 
-You can connect to a system profile without opening the app at all. Give the profile ID and the stack:
+## Skip the app
+
+You do not need the MCP Profile Hub Marketplace app to use a system profile. The connector URL specifies the profile and its stack or project. You still need the app to create, duplicate, import, or edit a custom profile.
+
+**Stack-based profiles.** The URL below connects to the CMS system profile and sets it to use your stack:
 
 ```
 https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=cms&apikey=<STACK_API_KEY>
 ```
 
-For a profile that works at the organization level rather than on a stack, give the project instead:
+**Organization-level profiles.** For a profile that operates at the organization level rather than on a stack, specify the project instead. The URL below connects to the Launch system profile:
 
 ```
 https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=launch&project_uid=<LAUNCH_PROJECT_UID>
 ```
 
-Registering the first one with Claude Code:
+**Register the URL with a client.** The command below registers the CMS URL with Claude Code:
 
 ```bash
 claude mcp add --transport http cms \
   "https://mcp-profile-hub.contentstack.com/api/mcp?profile_id=cms&apikey=<STACK_API_KEY>"
 ```
 
-This skips saving a configuration, not signing in. You still complete Contentstack Open Authorization (OAuth) sign-in on first connect, and every call runs with your own roles.
+**Profile IDs.** For the `profile_id` of every system profile, see [System profiles](/developers/mcp-profiles-and-catalogs#system-profiles).
+
+**Sign-in still applies.** When you configure a system profile from the connector URL, you still complete Contentstack Open Authorization (OAuth) sign-in on first connect. Every call runs with your own roles and permissions.
 
 ## Override the stack on a single call
 
-Stack-scoped tools accept an optional `stack_api_key` argument, so an agent can run one call against a different stack without changing the connector URL. Contentstack describes the argument to the model like this:
+A connector URL sets one stack for every call on that connection. Stack-scoped tools also accept an optional `stack_api_key` argument, which runs a single call against a different stack. Contentstack describes the argument to the model with the following text:
 
 ```text
 Optional. API key of the stack to run this call against, overriding the stack
 configured for the profile. Omit to use the configured stack.
 ```
 
-Omitting it uses the configured stack.
+Because the argument is optional, a call that omits `stack_api_key` runs against the configured stack. Only tools that target a stack accept the argument: CMA, CMA Extended, and CDA. The following tools operate at the organization level and do not accept the argument: Launch, Personalize, Lytics, Analytics, Developer Hub, Brand Kit, the Automate catalog, and your own automations and agents.
 
-Contentstack advertises this argument only on tools that target a stack: CMA, CMA Extended, and CDA. Tools that work at the organization level do not offer it, because a stack means nothing to them. That covers Launch, Personalize, Lytics, Analytics, Developer Hub, Brand Kit, and the Automate catalog, along with your own automations and agents.
+A stack override grants no additional access. The call still runs with your OAuth token, and Contentstack rejects a stack that your account cannot access.
 
-This grants no extra access. The call still runs on your OAuth token, and Contentstack rejects a stack your account cannot reach.
+## A connector URL is scoped to one profile
 
-## The URL decides which profile a client can use
-
-Connecting to `?profile_id=X` binds that connection to profile X. A client cannot ask for a different profile over that connection, and Contentstack refuses the attempt:
+When you connect to `?profile_id=X`, Contentstack binds that connection to profile X. When a client requests a different profile over that connection, Contentstack rejects the request with the error below:
 
 ```
 Profile scope mismatch (requested profile_id <REQUESTED>, this connection is
@@ -124,22 +128,22 @@ scoped to <SCOPED>).
 
 To use another profile, connect to a URL that scopes the connection to that profile.
 
-One exception: a scoped connection can still list the profiles in your organization, including names, descriptions, and tool counts. It cannot read their configuration or run their tools.
+A scoped connection still lists the profiles in your organization, including names, descriptions, and tool counts. It cannot read their configuration or run their tools.
 
 ## Sign-in parameters
 
-Three more parameters appear on connector URLs. They affect OAuth sign-in and discovery rather than tool calls.
+Three more parameters appear on connector URLs. They affect OAuth sign-in and discovery rather than tool calls, and the table below gives each one:
 
 | Parameter | Effect | Notes |
 | --- | --- | --- |
-| `org_uid` | Identifies your organization during OAuth sign-in. The Installation step pre-fills it | A hint only, and it lets Contentstack skip looking your organization up. It has **no effect on a tool call**, so changing it after you sign in does nothing |
-| `cma_host` | Names the Contentstack API host during sign-in | Sets which regional Contentstack endpoints the sign-in uses. Leave it as the Installation step supplies it unless you know your organization sits on a non-standard host |
-| `user_uid` | Contentstack carries this value through discovery | You never need to set this manually. The Installation step supplies it when it applies |
+| `org_uid` | Identifies your organization during OAuth sign-in. The Installation step pre-fills it | Contentstack uses it in place of an organization lookup during sign-in. Contentstack reads it only during sign-in, **not on a tool call** |
+| `cma_host` | Names the Contentstack API host during sign-in | Sets which regional Contentstack endpoints the sign-in uses. Leave it as the Installation step supplies it unless your organization runs on a non-standard host |
+| `user_uid` | Contentstack passes this value through discovery | The Installation step supplies this value when it applies, so you do not set it manually |
 
-Because Contentstack resolves your organization from the session you signed in with, a "wrong organization" problem is a sign-in problem. Reconnect and sign in to the organization you want rather than editing `org_uid`.
+Because Contentstack identifies your organization from the session you signed in with, you change the organization through sign-in. To use a different organization, reconnect and sign in to that organization rather than editing `org_uid`.
 
 ## Next Steps
 
-- [Create a profile](/developers/mcp-create-a-profile): the wizard, and which connections it asks for.
+- [Create a profile](/developers/mcp-create-a-profile): the wizard, and which connections it requests.
 - [Connect a client to MCP Profile Hub](/developers/mcp-connect-a-client-to-profile-hub): install snippets per client.
 - [Monitor and troubleshoot](/developers/mcp-monitor-and-troubleshoot): what a failed connection reports.

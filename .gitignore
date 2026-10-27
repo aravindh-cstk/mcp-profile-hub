@@ -4,3 +4,6 @@ node_modules/
 .DS_Store
 doc-standards/
 .claude/
+
+# Generated tier-3 review artifacts
+.doc-review/

@@ -2,33 +2,33 @@
 uid: ""
 url: /developers/mcp-profiles-and-catalogs
 seo_title: Profiles and catalogs
-seo_description: How MCP Profile Hub profiles bundle tools, configuration, and scope, the system profiles Contentstack ships, and the tool catalogs a profile draws from.
+seo_description: MCP Profile Hub profiles bundle tools, configuration, and scope. Read about the system profiles Contentstack ships and the tool catalogs a profile draws from.
 ---
 
 # Profiles and catalogs
 
 ## Overview
 
-A profile is a named bundle of Contentstack tools you connect an AI client to. Those tools come from catalogs, which are the groupings Contentstack organizes its API operations into. This page covers what a profile holds, the ready-made profiles Contentstack ships, and the catalogs a profile draws from.
+Control which Contentstack tools an AI client can call by connecting it to a profile. A profile is a named set of Contentstack tools, and those tools come from catalogs, which group Contentstack's API operations. Use a system profile that Contentstack provides, or build a custom profile from the tools in one or more catalogs.
 
-A profile bundles:
+A profile bundles the four parts below:
 
 - **Identity:** a name, description, and unique `profile_id` (for example, `asset_librarian`).
 - **Tools:** the set of tools it exposes.
 - **Configuration:** the Contentstack projects it operates on, such as the default stack.
-- **Scope:** you decide whether the profile stays private to you or is shared across your organization.
+- **Scope:** you decide whether the profile is private to you or available to your whole organization.
 
 ## System profiles
 
-System profiles are ready-to-use profiles available to every organization. Pick a stack, install, and use them. The **Profiles** screen splits them into two tabs.
+Contentstack provides system profiles that require no tool selection. To use a system profile, select a stack and complete the **Installation** step. The **Profiles** screen splits them into two tabs.
 
-You cannot edit a system profile beyond its configuration. To change which tools one exposes, duplicate it first, which produces an editable custom copy. See [Manage profiles](/developers/mcp-manage-profiles).
+You cannot edit a system profile beyond its configuration. To change which tools one exposes, duplicate it first, which produces an editable custom copy.
 
 ### Contentstack products
 
-Seven profiles, one per Contentstack product.
+The table below lists seven profiles, one per Contentstack product.
 
-> **Warning:** System product profiles expose their product's complete toolset, including delete and publish operations. Assign one only where you intend the user to have full control of that product.
+> **Warning:** System product profiles expose their product's complete toolset, including delete and publish operations. Assign a product profile only to users who need the product's complete toolset.
 
 | Profile | `profile_id` | Tools | Covers |
 | --- | --- | --- | --- |
@@ -44,11 +44,11 @@ Tool counts come from the seeded profile definitions. The app shows the current 
 
 ### Specialty profiles
 
-Contentstack builds twenty-one profiles for one job each. Most are deliberately narrow: read-only discovery, or a single focused operation. For example:
+Contentstack provides 21 specialty profiles. Each one covers one job, such as read-only discovery or a single workflow. The table below lists six of them:
 
 | Profile | `profile_id` | Job |
 | --- | --- | --- |
-| Content Explorer | `content_explorer` | Read-only lookup of content types, entries, and assets. The safest profile for browsing a stack |
+| Content Explorer | `content_explorer` | Read-only lookup of content types, entries, and assets |
 | Asset Librarian | `asset_librarian` | Organize and enrich the asset library without publishing or deleting |
 | Publishing Helper | `publishing_helper` | Publish and unpublish prepared content, without editing it |
 | Governance Inspector | `governance_inspector` | Read-only audit trail, version history, and publish rules for compliance review |
@@ -59,31 +59,37 @@ Browse the **Specialty profiles** tab in the app for the current list.
 
 ## Custom profiles
 
-Your organization creates custom profiles from the tool browser to match your own jobs, for example a regional publishing assistant, a localization workflow profile, or a content audit profile. To build one, see [Create a profile](/developers/mcp-create-a-profile).
+Your organization creates custom profiles from the tool browser to match your own jobs, for example a regional publishing assistant, a localization workflow profile, or a content audit profile.
 
-Duplicating a system profile is the other way to get a custom one, because a duplicate is always custom and always editable. See [System profiles](#system-profiles).
+When you duplicate a system profile, the duplicate is also a custom profile, which you can edit. See [System profiles](#system-profiles).
 
-TODO(screenshot): Profiles screen. It should show the Your profiles section, the System profiles section with the Contentstack products and Specialty profiles tabs, the hover actions on a profile card, and the New Profile button.
+![The Profiles screen, showing the Your profiles section with its New Profile tile, the System profiles section listing CMS, BrandKit, Lytics, Personalize, Analytics, Launch, DeveloperHub, and Content Explorer cards tagged System, and the Executions, Disconnect, and New Profile controls.](images/profiles-screen.png)
 
 ## Where tools come from
 
-A profile draws tools from three tiers. The tool browser shows each tier as a tab.
+A profile draws tools from three tiers. The tool browser shows each tier as a tab. The table below describes each tier.
 
 | Tier | Tab | What it holds |
 | --- | --- | --- |
-| Hosted catalogs | `Contentstack APIs` | Individual Contentstack API operations, which Contentstack groups by service |
-| Your automations | `Automations` | Your Contentstack Automate automations, which the browser exposes as one tool each |
-| Your agents | `AI agents` | Your Agent OS agents, which the browser exposes as one tool each |
+| Hosted catalogs | **Contentstack APIs** | Individual Contentstack API operations, which Contentstack groups by service |
+| Your automations | **Automations** | Your Contentstack Automate automations, which the browser exposes as one tool each |
+| Your agents | **AI agents** | Your Agent OS agents, which the browser exposes as one tool each |
 
-The tool browser also groups tools by area, for example Entry Management or Content Types.
+**Tools group by area within a tab.**
 
-The `Automations` and `AI agents` tabs cover work you have already built in Contentstack. One call runs a whole workflow instead of the agent chaining many API operations. See [Automations and agents as tools](/developers/mcp-automations-and-agents).
+Each tab sorts its tools into areas, for example Entry Management or Content Types.
 
-The tab strip appears only when more than one tier has content. If your organization uses neither Automate nor Agent OS, the browser shows the Contentstack API tools with no tabs.
+**Two tabs cover work you have already built.**
+
+The **Automations** and **AI agents** tabs expose your existing automations and agents as tools, so a single tool call runs the complete workflow.
+
+**The tool browser shows tabs only when more than one tier contains tools.**
+
+If your organization uses neither Automate nor Agent OS, only one tier has content and the browser shows the Contentstack API tools with no tabs.
 
 ## Catalogs
 
-The `Contentstack APIs` tier holds ten catalogs. Most map to one Contentstack service, but the Content Management API (CMA), CMA Extended, and the Content Delivery API (CDA) all cover content, split by what each access method reaches rather than by product:
+The **Contentstack APIs** tier contains ten catalogs. Most map to one Contentstack service. The [Content Management API (CMA)](/developers/mcp-cma-tools), CMA Extended, and the [Content Delivery API (CDA)](/developers/mcp-cda-tools) all cover content and differ by the API operations each one includes. The table below lists the ten catalogs:
 
 | Catalog | Availability | Covers |
 | --- | --- | --- |
@@ -98,15 +104,15 @@ The `Contentstack APIs` tier holds ten catalogs. Most map to one Contentstack se
 | Lytics | Plan-dependent | Audience segments, user profiles, and behavioral intelligence |
 | Personalize | Plan-dependent | Experiences, experiments, and personalization data |
 
-The **Automate** catalog manages Automate itself. To call your own automations, use the `Automations` tab instead.
+The **Automate** catalog contains tools that manage Automate itself. To call your own automations, use the **Automations** tab instead.
 
-Catalog names appear in two forms in the product, and both are correct. The tool browser closes them up (`BrandKit`, `DeveloperHub`), while profile cards and the configuration wizard space them out (Brand Kit, Developer Hub). Search the tool browser using the closed-up form.
+The product uses two forms of some catalog names. The tool browser shows them as one word (**BrandKit**, **DeveloperHub**), while profile cards and the configuration wizard show them as two (**Brand Kit**, **Developer Hub**). Search the tool browser using the one-word form.
 
-For the full tool list per service, see the [Tool Catalog](https://www.contentstack.com/docs/developers/contentstack-mcp-server#tool-catalog) in the Contentstack MCP Server documentation, which lists every tool in each group.
+> **Additional Resource:** For more information on every tool in each group, refer to the [Tool Catalog](/developers/contentstack-mcp-server#tool-catalog) documentation.
 
 ## Operation tags
 
-While you build a profile, the browser tags each tool by operation:
+While you build a profile, the browser tags each tool by operation, using the tags in the table below:
 
 | Tag | What it covers | Risk |
 | --- | --- | --- |
@@ -119,21 +125,21 @@ While you build a profile, the browser tags each tool by operation:
 
 ## Plan-gated catalogs
 
-If your organization's plan does not include a product, its catalog does not appear in the tool browser at all. Contentstack withholds the tab as well as the tools, because an empty tab reads as a broken product rather than one you do not have.
+**The browser does not display what your plan excludes.**
 
-Saving a profile that contains tools from a catalog your plan excludes fails with:
+If your organization's plan does not include a product, its catalog does not appear in the tool browser. Contentstack withholds the tab as well as the tools, so the browser lists only the catalogs your plan covers.
+
+**A save fails when the profile contains an excluded tool.**
+
+The browser does not display an excluded tool, but a profile can contain one when you import a profile that an organization on a different plan exported. When you save that profile, the save fails with the message below:
 
 ```
 This organization's plan does not include <catalogs>. Remove the tools from that catalog and save again.
 ```
 
-This happens most often when you import a profile that an organization on a different plan exported. Remove the named tools and save again.
-
-If Contentstack cannot read your plan, it serves every catalog rather than blocking you.
-
 ## Keep a profile focused
 
-Required OAuth scopes come from your tool selection, so a wider selection asks the user to approve more access at connect time. A profile works best when it supports one well-defined job. When in doubt:
+Contentstack derives the required OAuth scopes from your tool selection, so a wider selection requires the user to approve more access when connecting. Scope each profile to one job by following the three rules below:
 
 - Prefer a new focused profile over broadening an existing one.
 - Expose only the tools the job needs.
