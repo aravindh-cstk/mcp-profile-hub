@@ -107,24 +107,7 @@ Select one in the [profile's configuration](/developers/mcp-profile-hub-create-a
 
 ## Troubleshooting
 
-If a tool does not appear or a call fails, see [Automation and agent errors](/developers/mcp-profile-hub-monitor-and-troubleshoot#automation-and-agent-errors) for the full error list, and the **Executions** view on the same page.
-
-**A published automation fails when the agent calls it, with a secure-trigger error**
-
-```
-Automation "<AUTOMATION_ID>" uses a secure HTTP trigger, which is not supported yet.
-Disable Secure HTTP Trigger on the automation, or pick a different automation.
-```
-
-**Root Cause**: Contentstack cannot detect Secure HTTP Trigger on automations as it does on agents. As a result, secured automations remain visible in the tool browser, and you can add them to a profile. However, the call fails when the agent attempts to run the automation.
-
-**Resolution**: Turn off Secure HTTP Trigger on the automation in Automate, or pick a different automation.
-
-**An agent run times out before finishing**
-
-**Root Cause**: The run exceeded the profile's timeout, which Contentstack caps at 120000 ms.
-
-**Resolution**: Raise `timeout` on the [connector URL](/developers/mcp-profile-hub-url-parameters) up to 120000 ms, or look up the reported execution ID in Agent OS to see the result.
+> **Additional Resource:** For more information on automation and agent errors, for example a secure HTTP trigger error or a timeout, refer to the [Profile Hub Automations and Agents](/contentstack-mcp-troubleshooting/faqs#profile-hub-automations-and-agents) section of the Contentstack MCP Troubleshooting Guides documentation.
 
 ## Limitations
 
@@ -139,4 +122,4 @@ Disable Secure HTTP Trigger on the automation, or pick a different automation.
 
 - [Create a profile](/developers/mcp-profile-hub-create-a-profile): pick automations and agents in the tool browser's wizard step.
 - [Manage profiles](/developers/mcp-profile-hub-manage-profiles): see what an export leaves out and the steps to re-add tools after an import.
-- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): read the Executions view and the full error reference for automation and agent failures.
+- [Monitor tool calls](/developers/mcp-profile-hub-monitor-tool-calls): read the Executions view to find the error message of a failed automation or agent call.

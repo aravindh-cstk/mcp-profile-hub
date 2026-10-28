@@ -127,4 +127,5 @@ MCP Profile Hub records the tool calls that each profile runs. Each entry captur
 - [Create a profile](/developers/mcp-profile-hub-create-a-profile): pick tools, set stack context, and publish a profile to get its connector URL.
 - [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): add a connector URL to your MCP client and complete OAuth.
 - [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs): the catalogs that group the tools a profile can expose.
-- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): read the Executions view and diagnose failed tool calls.
+- [Monitor tool calls](/developers/mcp-profile-hub-monitor-tool-calls): read the Executions view to confirm that tool calls reach Contentstack.
+- [Contentstack MCP Troubleshooting Guides](/contentstack-mcp-troubleshooting/faqs): diagnose failed tool calls from their error messages.

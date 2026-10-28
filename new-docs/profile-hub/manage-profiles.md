@@ -117,7 +117,7 @@ When you import an export of a system profile, Contentstack appends ` (imported)
 
 To protect system profiles, Contentstack creates every import as a custom profile and derives its `profile_id` from the name. It rejects any import whose derived `profile_id` matches a system profile, so no import can replace a system profile for the other users in your organization.
 
-Only a system-profile export receives the ` (imported)` rename, which Contentstack detects from a marker that it writes into the export. Contentstack does not rename a custom profile named `CMS`, or a file that someone edited manually. For that import, Contentstack derives `cms`, and the import fails with the system-profile error that [System profile name](#system-profile-name) describes.
+Only a system-profile export receives the ` (imported)` rename, which Contentstack detects from a marker that it writes into the export. Contentstack does not rename a custom profile named `CMS`, or a file that someone edited manually. For that import, Contentstack derives `cms`, and the import fails with the system-profile error that [Profile Hub Import](/contentstack-mcp-troubleshooting/faqs#profile-hub-import) describes.
 
 ## Edit a profile
 
@@ -137,7 +137,7 @@ A profile has an `enabled` flag. When Contentstack disables a profile, the chang
 
 ## Delete a profile
 
-**Warning:** When you delete a profile, every client that uses its URL loses access immediately, including the clients of other users. Check the [Executions](/developers/mcp-profile-hub-monitor-and-troubleshoot) view for recent activity before you delete a shared profile.
+**Warning:** When you delete a profile, every client that uses its URL loses access immediately, including the clients of other users. Check the [Executions](/developers/mcp-profile-hub-monitor-tool-calls) view for recent activity before you delete a shared profile.
 
 To delete a profile, follow the two steps below:
 
@@ -157,120 +157,11 @@ These caps apply whether you create, duplicate, or import a profile.
 
 ## Troubleshooting
 
-For every import failure below, the app shows the heading `Couldn't import profile` and then the message in that entry.
-
-### File too large
-
-```
-That file is too large to be a profile export.
-```
-
-**Root Cause**: The file exceeds 1 MiB.
-
-**Resolution**: Confirm you picked a profile export, not another JSON file.
-
-### Invalid JSON
-
-```
-That file isn't valid JSON.
-```
-
-**Root Cause**: The file does not parse.
-
-**Resolution**: Re-export the profile rather than editing the file manually.
-
-### Not a profile export
-
-```
-That JSON isn't an exported profile. Pick a file exported from MCP Profile Hub.
-```
-
-**Root Cause**: The file is JSON, but not a profile export.
-
-**Resolution**: Export the profile from the source organization.
-
-### Newer export format
-
-```
-That file was exported by a newer version of MCP Profile Hub (format v2). Update, then import it.
-```
-
-**Root Cause**: The file uses a newer export format.
-
-**Resolution**: Contentstack hosts and updates MCP Profile Hub centrally, so you cannot apply the update that the message requests. Re-export the profile from a source organization on your version, or import the file after Contentstack updates MCP Profile Hub for your organization.
-
-### Too many tools
-
-```
-That profile has more than 200 tools, which is the maximum a profile can hold.
-```
-
-**Root Cause**: The export exceeds the tool limit.
-
-**Resolution**: Split the profile in the source organization, then export each part.
-
-### Missing or malformed field
-
-```
-That profile is missing or malformed at "profile.name".
-```
-
-**Root Cause**: A required field is absent or the wrong type.
-
-**Resolution**: Re-export rather than editing the file.
-
-### System profile name
-
-```
-"CMS" is a system profile. Choose a different name.
-```
-
-**Root Cause**: The file is not a system-profile export, so Contentstack does not rename it, and the `profile_id` that Contentstack derives from the name matches a system profile.
-
-**Resolution**: Rename the profile in the file, or re-export it from the source organization.
-
-### Profile ID already exists
-
-```
-A profile with this profile_id already exists
-```
-
-**Root Cause**: You already have a profile of that name.
-
-**Resolution**: Rename the profile before importing.
-
-### Your profile limit reached
-
-```
-Profile limit of 50 reached; delete an existing profile first
-```
-
-**Root Cause**: You already have the maximum number of profiles.
-
-**Resolution**: Delete a profile you no longer use.
-
-### Organization limit reached
-
-```
-Organization profile limit of 500 reached; ask an administrator to remove unused profiles
-```
-
-**Root Cause**: Your organization already has the maximum number of profiles.
-
-**Resolution**: Ask an admin to remove unused profiles.
-
-### Plan excludes a catalog
-
-```
-This organization's plan does not include launch. Remove the tools from that catalog and save again.
-```
-
-**Root Cause**: The file contains tools your plan excludes. See [Profiles and catalogs](/developers/mcp-profile-hub-profiles-and-catalogs#plan-gated-catalogs).
-
-**Resolution**: Remove those tools, or import into an organization on a plan that includes them.
+> **Additional Resource:** For more information on the messages a failed import shows and the fix for each one, refer to the [Profile Hub Import](/contentstack-mcp-troubleshooting/faqs#profile-hub-import) section of the Contentstack MCP Troubleshooting Guides documentation.
 
 ## Next Steps
 
 - [Connect a client to Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): the install snippet for each client, useful after you duplicate or import a profile.
-- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): the Executions view and the full error reference.
+- [Monitor tool calls](/developers/mcp-profile-hub-monitor-tool-calls): the Executions view, which records each tool call and its error message.
+- [Contentstack MCP Troubleshooting Guides](/contentstack-mcp-troubleshooting/faqs): the error messages a profile can return, with the cause and fix of each.
 - [Automations and agents as tools](/developers/mcp-profile-hub-automations-and-agents): the steps to re-add the automation tools an export drops.

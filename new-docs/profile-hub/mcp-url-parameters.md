@@ -146,4 +146,4 @@ Because Contentstack identifies your organization from the session you signed in
 
 - [Create a profile](/developers/mcp-profile-hub-create-a-profile): the wizard, and which connections it requests.
 - [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): install snippets per client.
-- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): what a failed connection reports.
+- [Contentstack MCP Troubleshooting Guides](/contentstack-mcp-troubleshooting/faqs#profile-hub-connection-and-sign-in): the causes of a failed connection, and the fix for each.

@@ -56,7 +56,7 @@ The **Claude Desktop** tab adds the profile as a connector to your claude.ai acc
 
 On the profile's **Installation** step, the **Claude Desktop** tab has an **Add to Claude** button. The button opens claude.ai with the connector name and URL filled in, and you confirm them to add the connector.
 
-Your Claude plan can limit custom connectors to organization admins. On such a plan, the button has no effect for other users. For the alternatives, see [The Add to Claude button has no effect](#the-add-to-claude-button-has-no-effect).
+Your Claude plan can limit custom connectors to organization admins. On such a plan, the button has no effect for other users. For the alternatives, see [Profile Hub Client Setup](/contentstack-mcp-troubleshooting/faqs#profile-hub-client-setup).
 
 To add the connector manually, follow the three steps below:
 
@@ -89,7 +89,7 @@ The block goes inside `mcpServers` and has the shape below, where `<PINNED_VERSI
 
 **Restart after editing.** Claude Desktop reads `claude_desktop_config.json` only at launch, so until you restart it the server does not appear and Claude Desktop shows no error. Restart Claude Desktop.
 
-**Sign in on first use.** On first use, a browser opens for Contentstack OAuth. If two browser tabs open, see [Two browser tabs open during sign-in](#two-browser-tabs-open-during-sign-in).
+**Sign in on first use.** On first use, a browser opens for Contentstack OAuth. If two browser tabs open, see [Profile Hub Client Setup](/contentstack-mcp-troubleshooting/faqs#profile-hub-client-setup).
 
 ### Claude Code
 
@@ -203,31 +203,7 @@ When Contentstack updates the pinned version, the new version also reads an empt
 
 ## Troubleshooting
 
-### The Add to Claude button has no effect
-
-**Root Cause**: Your Claude plan restricts custom connectors to organization admins.
-
-**Resolution**: Use the **Claude Desktop Manual** tab instead, or ask a Claude organization admin to add the connector.
-
-### Two browser tabs open during sign-in
-
-**Root Cause**: Claude Desktop's sign-in for servers that you add through the manual config occasionally opens two browser tabs at once.
-
-**Resolution**: Complete the sign-in in the first tab and close the other. If the profile's tools still do not appear, restart Claude Desktop and sign in again.
-
-### The claude mcp add command fails
-
-**Root Cause**: An unquoted connector URL lets the shell read `?` and `&` as shell syntax instead of part of the URL.
-
-**Resolution**: Keep the URL quoted when you run `claude mcp add`.
-
-### The server does not appear after editing claude_desktop_config.json
-
-**Root Cause**: Claude Desktop reads `claude_desktop_config.json` only at launch.
-
-**Resolution**: Restart Claude Desktop.
-
-> **Additional Resource:** For more information on failures this list does not cover, refer to the [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot) documentation. Start with the **Executions** view in the app, which shows the error message and request metadata for most failures.
+> **Additional Resource:** For more information on installation and sign-in errors, refer to the [Profile Hub Client Setup](/contentstack-mcp-troubleshooting/faqs#profile-hub-client-setup) section of the Contentstack MCP Troubleshooting Guides documentation.
 
 ## Next Steps
 

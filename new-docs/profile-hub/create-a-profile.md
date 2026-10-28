@@ -134,4 +134,4 @@ Either the tool manifests fail to load, or a catalog key changes after you save 
 - [Connect a client to MCP Profile Hub](/developers/mcp-profile-hub-connect-a-client-to-profile-hub): paste the connector URL into Claude, Cursor, or another supported client.
 - [MCP URL parameters](/developers/mcp-profile-hub-url-parameters): set branch, environment, and locale on the connector URL, since the wizard has no field for them.
 - [Manage profiles](/developers/mcp-profile-hub-manage-profiles): duplicate, export, import, and delete profiles.
-- [Monitor and troubleshoot](/developers/mcp-profile-hub-monitor-and-troubleshoot): confirm the profile's tool calls reach Contentstack.
+- [Monitor tool calls](/developers/mcp-profile-hub-monitor-tool-calls): confirm the profile's tool calls reach Contentstack.
