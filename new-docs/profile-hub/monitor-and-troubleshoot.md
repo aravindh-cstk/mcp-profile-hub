@@ -43,7 +43,7 @@ The view loads 50 executions at a time, and the filters narrow only what it has 
 
 The groups below sort failures by their source: the connection and sign-in, your local environment, authentication, configuration, automations and agents, and tool selection.
 
-**Not every failure comes from the profile.** A tool call can fail because the model passed incomplete or malformed arguments, for example omitting a required field on publish. Some MCP clients retry the call with corrected arguments. The MCP client and the model control this retry behavior, not the profile or the tool. See [The agent calls the wrong tool, or passes invalid arguments](#the-agent-calls-the-wrong-tool-or-passes-invalid-arguments) for the fix.
+**Not every failure comes from the profile.** A tool call can fail because the model passed incomplete or malformed arguments, for example omitting a required field on publish. Some MCP clients retry the call with corrected arguments. The MCP client and the model control this retry behavior, not the profile or the tool. See [The agent calls the wrong tool, or passes invalid arguments](#tool-availability-and-selection-errors) for the fix.
 
 ### Connection and sign-in problems
 
