@@ -89,7 +89,7 @@ If your organization uses neither Automate nor Agent OS, only one tier has conte
 
 ## Catalogs
 
-The **Contentstack APIs** tier contains ten catalogs. Most map to one Contentstack service. The [Content Management API (CMA)](/developers/mcp-cma-tools), CMA Extended, and the [Content Delivery API (CDA)](/developers/mcp-cda-tools) all cover content and differ by the API operations each one includes. The table below lists the ten catalogs:
+The **Contentstack APIs** tier contains ten catalogs. Most map to one Contentstack service. The [Content Management API (CMA)](/developers/contentstack-mcp-server#content-management-api-cma), CMA Extended, and the [Content Delivery API (CDA)](/developers/contentstack-mcp-server#content-delivery-api-cda) all cover content and differ by the API operations each one includes. The table below lists the ten catalogs:
 
 | Catalog | Availability | Covers |
 | --- | --- | --- |
